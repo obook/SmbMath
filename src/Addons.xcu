@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oor:component-data xmlns:oor="http://openoffice.org/2001/registry"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ oor:name="Addons" oor:package="org.openoffice.Office">
+   <node oor:name="AddonUI">
+
+      <!-- Images -->
+
+      <node oor:name="Images">
+            <node oor:name="com.obooklage.smbmath.image1" oor:op="replace">
+                     <prop oor:name="URL" oor:type="xs:string">
+                              <value>macro:///SmbMath.MainModule.Main</value>
+                     </prop>
+                     <node oor:name="UserDefinedImages">
+                              <prop oor:name="ImageSmallURL">
+                                    <value>%origin%/icons/icon.svg</value>
+                              </prop>
+                              <prop oor:name="ImageBigURL">
+                                    <value>%origin%/icons/icon.svg</value>
+                              </prop>
+                     </node>
+            </node>
+            <node oor:name="com.obooklage.smbmath.image2" oor:op="replace">
+                     <prop oor:name="URL" oor:type="xs:string">
+                              <value>macro:///SmbMath.MainModule.Fraction</value>
+                     </prop>
+                     <node oor:name="UserDefinedImages">
+                              <prop oor:name="ImageSmallURL">
+                                    <value>%origin%/icons/fraction.svg</value>
+                              </prop>
+                              <prop oor:name="ImageBigURL">
+                                    <value>%origin%/icons/fraction.svg</value>
+                              </prop>
+                     </node>
+            </node>
+            <node oor:name="com.obooklage.smbmath.image3" oor:op="replace">
+                     <prop oor:name="URL" oor:type="xs:string">
+                              <value>macro:///SmbMath.MainModule.SquareRoot</value>
+                     </prop>
+                     <node oor:name="UserDefinedImages">
+                              <prop oor:name="ImageSmallURL">
+                                    <value>%origin%/icons/squareroot.svg</value>
+                              </prop>
+                              <prop oor:name="ImageBigURL">
+                                    <value>%origin%/icons/squareroot.svg</value>
+                              </prop>
+                     </node>
+            </node>
+            <node oor:name="com.obooklage.smbmath.image4" oor:op="replace">
+                     <prop oor:name="URL" oor:type="xs:string">
+                              <value>macro:///SmbMath.MainModule.Expression</value>
+                     </prop>
+                     <node oor:name="UserDefinedImages">
+                              <prop oor:name="ImageSmallURL">
+                                    <value>%origin%/icons/expression.svg</value>
+                              </prop>
+                              <prop oor:name="ImageBigURL">
+                                    <value>%origin%/icons/expression.svg</value>
+                              </prop>
+                     </node>
+            </node>
+      </node>
+
+      <!-- Toolbar -->
+
+      <node oor:name="OfficeToolBar"> <!-- Les réglages sont dans WriterWindowState.xcu , mais elle s'appelle "Add-on 5" !! -->
+            <node oor:name="SmbMath.OfficeToolBar" oor:op="replace">
+                     <node oor:name="SmbMath.OfficeToolBar.01" oor:op="replace">
+                              <prop oor:name="Context" oor:type="xs:string">
+                                    <value>com.sun.star.text.TextDocument</value>
+                              </prop>
+                              <prop oor:name="URL" oor:type="xs:string">
+                                    <value>macro:///SmbMath.MainModule.Main</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                    <value>_self</value>
+                              </prop>
+                              <prop oor:name="Title" oor:type="xs:string">
+                                    <value>SmbMath Title</value>
+                              </prop>
+                     </node>
+            </node>
+      </node>
+
+      <!-- Menubar -->
+
+      <node oor:name="OfficeMenuBar">
+            <node oor:name="SmbMath.OfficeMenuBar" oor:op="replace">
+                  <prop oor:name="Context" oor:type="xs:string">
+                           <value>com.sun.star.text.TextDocument</value>
+                  </prop>
+                  <prop oor:name="Title" oor:type="xs:string">
+                              <value>SmbMath</value>
+                     </prop>
+                     <node oor:name="Submenu">
+                        <node oor:name="M1" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Formule</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>.uno:InsertObjectStarMath</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                        <node oor:name="M2" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Fraction</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.Fraction</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                        <node oor:name="M3" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Racine carrée</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.SquareRoot</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                        <node oor:name="M5" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Expression</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.Expression</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                     </node>
+            </node>
+      </node>
+
+   </node>
+</oor:component-data>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="MainModule" script:language="StarBasic" script:moduleType="normal">REM  *****  BASIC  *****
+
+Sub Main
+	MsgBox &quot;(C) O. Booklage 2023&quot;
+End Sub
+
+sub Fraction
+	rem ----------------------------------------------------------------------
+	rem define variables
+	dim document   as object
+	dim dispatcher as object
+	rem ----------------------------------------------------------------------
+	rem get access to the document
+	document   = ThisComponent.CurrentController.Frame
+	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+	
+	rem ----------------------------------------------------------------------
+	dim args1(0) as new com.sun.star.beans.PropertyValue
+	args1(0).Name = &quot;Text&quot;
+	args1(0).Value = &quot;{a} over {b}&quot; REM Revenir 11 fois en arrière
+	
+	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
+	
+	rem ----------------------------------------------------------------------
+	dim args2(1) as new com.sun.star.beans.PropertyValue
+	args2(0).Name = &quot;Count&quot;
+	args2(0).Value = 1
+	args2(1).Name = &quot;Select&quot;
+	args2(1).Value = false
+	For iCount = 0 To 9
+       	dispatcher.executeDispatch(document, &quot;.uno:GoLeft&quot;, &quot;&quot;, 0, args2())
+    Next iCount
+
+end sub
+
+sub SquareRoot
+	rem ----------------------------------------------------------------------
+	rem define variables
+	dim document   as object
+	dim dispatcher as object
+	rem ----------------------------------------------------------------------
+	rem get access to the document
+	document   = ThisComponent.CurrentController.Frame
+	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+	
+	rem ----------------------------------------------------------------------
+	dim args1(0) as new com.sun.star.beans.PropertyValue
+	args1(0).Name = &quot;Text&quot;
+	args1(0).Value = &quot;sqrt{}&quot; REM Revenir 1 fois en arrière
+	
+	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
+
+	rem ----------------------------------------------------------------------
+	dim args2(1) as new com.sun.star.beans.PropertyValue
+	args2(0).Name = &quot;Count&quot;
+	args2(0).Value = 1
+	args2(1).Name = &quot;Select&quot;
+	args2(1).Value = false
+	
+	dispatcher.executeDispatch(document, &quot;.uno:GoLeft&quot;, &quot;&quot;, 0, args2())
+	
+end sub
+
+sub Expression
+	rem ----------------------------------------------------------------------
+	rem define variables
+	dim document   as object
+	dim dispatcher as object
+	rem ----------------------------------------------------------------------
+	rem get access to the document
+	document   = ThisComponent.CurrentController.Frame
+	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+	
+	rem ----------------------------------------------------------------------
+	dim args1(0) as new com.sun.star.beans.PropertyValue
+	args1(0).Name = &quot;Text&quot;
+	args1(0).Value = Chr(34)+Chr(34)+&quot;A={  } newline&quot; REM Revenir 0 fois en arrière
+	
+	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
+	
+	rem ----------------------------------------------------------------------
+	dim args2(1) as new com.sun.star.beans.PropertyValue
+	args2(0).Name = &quot;Count&quot;
+	args2(0).Value = 1
+	args2(1).Name = &quot;Select&quot;
+	args2(1).Value = false
+	For iCount = 0 To 9
+       	dispatcher.executeDispatch(document, &quot;.uno:GoLeft&quot;, &quot;&quot;, 0, args2())
+    Next iCount
+end sub
+
+</script:module>
