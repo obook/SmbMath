@@ -208,7 +208,7 @@ sub Systeme REM M8
 	rem ----------------------------------------------------------------------
 	dim args1(0) as new com.sun.star.beans.PropertyValue
 	args1(0).Name = &quot;Text&quot;
-	args1(0).Value = &quot;alignl left lbrace stack{ { 2x + 3y = 7  } # { -3x + 2y = -4 } } right none&quot; REM Revenir 0 fois en arrière
+	args1(0).Value = &quot;alignl left lbrace stack{ { 2x + 3y = 7 } # { -3x + 2y = -4 } } right none&quot; REM Revenir 0 fois en arrière
 
 	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
 end sub
