@@ -189,7 +189,7 @@ sub Ensembles REM M7
 	rem ----------------------------------------------------------------------
 	dim args1(0) as new com.sun.star.beans.PropertyValue
 	args1(0).Name = &quot;Text&quot;
-	args1(0).Value = &quot;setN subset setZ subset D subset setQ  subset setR subset setC&quot; REM Revenir 0 fois en arrière
+	args1(0).Value = &quot;setN subset setZ subset D subset setQ subset setR subset setC&quot; REM Revenir 0 fois en arrière
 
 	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
 end sub
@@ -209,6 +209,42 @@ sub Systeme REM M8
 	dim args1(0) as new com.sun.star.beans.PropertyValue
 	args1(0).Name = &quot;Text&quot;
 	args1(0).Value = &quot;alignl left lbrace stack{ { 2x + 3y = 7  } # { -3x + 2y = -4 } } right none&quot; REM Revenir 0 fois en arrière
+
+	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
+end sub
+
+sub Implication REM M9
+	rem ----------------------------------------------------------------------
+	rem define variables
+	dim document   as object
+	dim dispatcher as object
+	rem ----------------------------------------------------------------------
+	rem get access to the document
+	document   = ThisComponent.CurrentController.Frame
+	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+	rem ----------------------------------------------------------------------
+	dim args1(0) as new com.sun.star.beans.PropertyValue
+	args1(0).Name = &quot;Text&quot;
+	args1(0).Value = &quot;si A drarrow B et B drarrow C, alors A drarrow C&quot; REM Revenir 0 fois en arrière
+
+	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
+end sub
+
+sub Equivalence REM M10
+	rem ----------------------------------------------------------------------
+	rem define variables
+	dim document   as object
+	dim dispatcher as object
+	rem ----------------------------------------------------------------------
+	rem get access to the document
+	document   = ThisComponent.CurrentController.Frame
+	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+	rem ----------------------------------------------------------------------
+	dim args1(0) as new com.sun.star.beans.PropertyValue
+	args1(0).Name = &quot;Text&quot;
+	args1(0).Value = &quot;2x – 2 = 0 dlrarrow x = 1&quot; REM Revenir 0 fois en arrière
 
 	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
 end sub

@@ -192,6 +192,28 @@
                                           <value>_self</value>
                               </prop>
                         </node>
+                        <node oor:name="M9" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Implication</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.Implication</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                        <node oor:name="M10" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Équivalence</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.Equivalence</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
                      </node>
             </node>
       </node>
