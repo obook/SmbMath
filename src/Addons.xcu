@@ -70,7 +70,7 @@
                                     <value>com.sun.star.text.TextDocument</value>
                               </prop>
                               <prop oor:name="URL" oor:type="xs:string">
-                                    <value>macro:///SmbMath.MainModule.Main</value>
+                                    <value>.uno:InsertObjectStarMath</value>
                               </prop>
                               <prop oor:name="Target" oor:type="xs:string">
                                     <value>_self</value>
@@ -93,7 +93,7 @@
                               <value>SmbMath</value>
                      </prop>
                      <node oor:name="Submenu">
-                        <node oor:name="M1" oor:op="replace">
+                        <node oor:name="M0" oor:op="replace">
                               <prop oor:name="Title">
                                           <value>Formule</value>
                               </prop>
@@ -104,7 +104,7 @@
                                           <value>_self</value>
                               </prop>
                         </node>
-                        <node oor:name="M2" oor:op="replace">
+                        <node oor:name="M1" oor:op="replace">
                               <prop oor:name="Title">
                                           <value>Fraction</value>
                               </prop>
@@ -115,7 +115,7 @@
                                           <value>_self</value>
                               </prop>
                         </node>
-                        <node oor:name="M3" oor:op="replace">
+                        <node oor:name="M2" oor:op="replace">
                               <prop oor:name="Title">
                                           <value>Racine carrée</value>
                               </prop>
@@ -126,12 +126,67 @@
                                           <value>_self</value>
                               </prop>
                         </node>
-                        <node oor:name="M5" oor:op="replace">
+                        <node oor:name="M3" oor:op="replace">
                               <prop oor:name="Title">
                                           <value>Expression</value>
                               </prop>
                               <prop oor:name="URL">
                                           <value>macro:///SmbMath.MainModule.Expression</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                        <node oor:name="M4" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Vecteur</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.Vecteur</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                        <node oor:name="M5" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Vecteur Coordonnées</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.VecteurCoordonnees</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                        <node oor:name="M6" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Angle</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.Angle</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                        <node oor:name="M7" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Ensembles</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.Ensembles</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                        <node oor:name="M8" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Système</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.Systeme</value>
                               </prop>
                               <prop oor:name="Target" oor:type="xs:string">
                                           <value>_self</value>

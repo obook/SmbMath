@@ -6,7 +6,7 @@ Sub Main
 	MsgBox &quot;(C) O. Booklage 2023&quot;
 End Sub
 
-sub Fraction
+sub Fraction REM M1
 	rem ----------------------------------------------------------------------
 	rem define variables
 	dim document   as object
@@ -15,14 +15,14 @@ sub Fraction
 	rem get access to the document
 	document   = ThisComponent.CurrentController.Frame
 	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
-	
+
 	rem ----------------------------------------------------------------------
 	dim args1(0) as new com.sun.star.beans.PropertyValue
 	args1(0).Name = &quot;Text&quot;
 	args1(0).Value = &quot;{a} over {b}&quot; REM Revenir 11 fois en arrière
-	
+
 	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
-	
+
 	rem ----------------------------------------------------------------------
 	dim args2(1) as new com.sun.star.beans.PropertyValue
 	args2(0).Name = &quot;Count&quot;
@@ -35,7 +35,7 @@ sub Fraction
 
 end sub
 
-sub SquareRoot
+sub SquareRoot REM M2
 	rem ----------------------------------------------------------------------
 	rem define variables
 	dim document   as object
@@ -44,12 +44,12 @@ sub SquareRoot
 	rem get access to the document
 	document   = ThisComponent.CurrentController.Frame
 	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
-	
+
 	rem ----------------------------------------------------------------------
 	dim args1(0) as new com.sun.star.beans.PropertyValue
 	args1(0).Name = &quot;Text&quot;
 	args1(0).Value = &quot;sqrt{}&quot; REM Revenir 1 fois en arrière
-	
+
 	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
 
 	rem ----------------------------------------------------------------------
@@ -58,12 +58,12 @@ sub SquareRoot
 	args2(0).Value = 1
 	args2(1).Name = &quot;Select&quot;
 	args2(1).Value = false
-	
+
 	dispatcher.executeDispatch(document, &quot;.uno:GoLeft&quot;, &quot;&quot;, 0, args2())
-	
+
 end sub
 
-sub Expression
+sub Expression REM M3
 	rem ----------------------------------------------------------------------
 	rem define variables
 	dim document   as object
@@ -72,14 +72,14 @@ sub Expression
 	rem get access to the document
 	document   = ThisComponent.CurrentController.Frame
 	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
-	
+
 	rem ----------------------------------------------------------------------
 	dim args1(0) as new com.sun.star.beans.PropertyValue
 	args1(0).Name = &quot;Text&quot;
-	args1(0).Value = Chr(34)+Chr(34)+&quot;A={  } newline&quot; REM Revenir 0 fois en arrière
-	
+	args1(0).Value = Chr(34)+Chr(34)+&quot;A={  } newline&quot; REM Revenir 10 fois en arrière
+
 	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
-	
+
 	rem ----------------------------------------------------------------------
 	dim args2(1) as new com.sun.star.beans.PropertyValue
 	args2(0).Name = &quot;Count&quot;
@@ -89,6 +89,128 @@ sub Expression
 	For iCount = 0 To 9
        	dispatcher.executeDispatch(document, &quot;.uno:GoLeft&quot;, &quot;&quot;, 0, args2())
     Next iCount
+end sub
+
+sub Vecteur REM M4
+	rem ----------------------------------------------------------------------
+	rem define variables
+	dim document   as object
+	dim dispatcher as object
+	rem ----------------------------------------------------------------------
+	rem get access to the document
+	document   = ThisComponent.CurrentController.Frame
+	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+	rem ----------------------------------------------------------------------
+	dim args1(0) as new com.sun.star.beans.PropertyValue
+	args1(0).Name = &quot;Text&quot;
+	args1(0).Value = &quot;widevec{AB}&quot; REM Revenir 4 fois en arrière
+
+	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
+
+	rem ----------------------------------------------------------------------
+	dim args2(1) as new com.sun.star.beans.PropertyValue
+	args2(0).Name = &quot;Count&quot;
+	args2(0).Value = 1
+	args2(1).Name = &quot;Select&quot;
+	args2(1).Value = false
+	For iCount = 1 To 2
+       	dispatcher.executeDispatch(document, &quot;.uno:GoLeft&quot;, &quot;&quot;, 0, args2())
+    Next iCount
+end sub
+
+sub VecteurCoordonnees REM M5
+	rem ----------------------------------------------------------------------
+	rem define variables
+	dim document   as object
+	dim dispatcher as object
+	rem ----------------------------------------------------------------------
+	rem get access to the document
+	document   = ThisComponent.CurrentController.Frame
+	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+	rem ----------------------------------------------------------------------
+	dim args1(0) as new com.sun.star.beans.PropertyValue
+	args1(0).Name = &quot;Text&quot;
+	args1(0).Value = &quot;widevec {AB} left( matrix { x_B - x_A ## y_B - y_A } right)&quot; REM Revenir 2 fois en arrière
+
+	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
+
+	rem ----------------------------------------------------------------------
+	dim args2(1) as new com.sun.star.beans.PropertyValue
+	args2(0).Name = &quot;Count&quot;
+	args2(0).Value = 1
+	args2(1).Name = &quot;Select&quot;
+	args2(1).Value = false
+	For iCount = 1 To 2
+       	dispatcher.executeDispatch(document, &quot;.uno:GoLeft&quot;, &quot;&quot;, 0, args2())
+    Next iCount
+end sub
+
+
+sub Angle REM M6
+	rem ----------------------------------------------------------------------
+	rem define variables
+	dim document   as object
+	dim dispatcher as object
+	rem ----------------------------------------------------------------------
+	rem get access to the document
+	document   = ThisComponent.CurrentController.Frame
+	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+	rem ----------------------------------------------------------------------
+	dim args1(0) as new com.sun.star.beans.PropertyValue
+	args1(0).Name = &quot;Text&quot;
+	args1(0).Value = &quot;widehat{ABC}&quot; REM Revenir 4 fois en arrière
+
+	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
+
+	rem ----------------------------------------------------------------------
+	dim args2(1) as new com.sun.star.beans.PropertyValue
+	args2(0).Name = &quot;Count&quot;
+	args2(0).Value = 1
+	args2(1).Name = &quot;Select&quot;
+	args2(1).Value = false
+	For iCount = 1 To 4
+       	dispatcher.executeDispatch(document, &quot;.uno:GoLeft&quot;, &quot;&quot;, 0, args2())
+    Next iCount
+end sub
+
+sub Ensembles REM M7
+	rem ----------------------------------------------------------------------
+	rem define variables
+	dim document   as object
+	dim dispatcher as object
+	rem ----------------------------------------------------------------------
+	rem get access to the document
+	document   = ThisComponent.CurrentController.Frame
+	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+	rem ----------------------------------------------------------------------
+	dim args1(0) as new com.sun.star.beans.PropertyValue
+	args1(0).Name = &quot;Text&quot;
+	args1(0).Value = &quot;setN subset setZ subset D subset setQ  subset setR subset setC&quot; REM Revenir 0 fois en arrière
+
+	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
+end sub
+
+
+sub Systeme REM M8
+	rem ----------------------------------------------------------------------
+	rem define variables
+	dim document   as object
+	dim dispatcher as object
+	rem ----------------------------------------------------------------------
+	rem get access to the document
+	document   = ThisComponent.CurrentController.Frame
+	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+
+	rem ----------------------------------------------------------------------
+	dim args1(0) as new com.sun.star.beans.PropertyValue
+	args1(0).Name = &quot;Text&quot;
+	args1(0).Value = &quot;alignl left lbrace stack{ { 2x + 3y = 7  } # { -3x + 2y = -4 } } right none&quot; REM Revenir 0 fois en arrière
+
+	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
 end sub
 
 </script:module>
