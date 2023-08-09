@@ -6,9 +6,11 @@
 	<node oor:name="UIElements">
 		<node oor:name="States">
 			<!-- Used to dock the toolbar in the first toolbar row (by default it's floating) -->
-			<node oor:name="private:resource/toolbar/SmbMath.OfficeToolBar" oor:op="replace">
+			<node oor:name="private:resource/toolbar/addon_SmbMath.OfficeToolBar" oor:op="replace">
 				<prop oor:name="UIName" oor:type="xs:string">
 				    <value>SmbMath</value> <!-- Toolbar name -->
+				    <value xml:lang="en-US">SmbMath</value>
+				    <value xml:lang="fr-FR">SmbMath</value>
 				</prop>
 				<prop oor:name="DockPos" oor:type="xs:string">
 					<value>10,0</value>
