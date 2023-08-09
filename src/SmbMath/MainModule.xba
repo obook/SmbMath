@@ -48,7 +48,7 @@ sub SquareRoot REM M2
 	rem ----------------------------------------------------------------------
 	dim args1(0) as new com.sun.star.beans.PropertyValue
 	args1(0).Name = &quot;Text&quot;
-	args1(0).Value = &quot;sqrt{}&quot; REM Revenir 1 fois en arrière
+	args1(0).Value = &quot;sqrt{a}&quot; REM Revenir 1 fois en arrière
 
 	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
 
@@ -76,7 +76,7 @@ sub Expression REM M3
 	rem ----------------------------------------------------------------------
 	dim args1(0) as new com.sun.star.beans.PropertyValue
 	args1(0).Name = &quot;Text&quot;
-	args1(0).Value = Chr(34)+Chr(34)+&quot;A={  } newline&quot; REM Revenir 10 fois en arrière
+	args1(0).Value = Chr(34)+Chr(34)+&quot;A={ 3x+1 } newline&quot; REM Revenir 10 fois en arrière
 
 	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
 
@@ -86,7 +86,7 @@ sub Expression REM M3
 	args2(0).Value = 1
 	args2(1).Name = &quot;Select&quot;
 	args2(1).Value = false
-	For iCount = 0 To 9
+	For iCount =1 To 5
        	dispatcher.executeDispatch(document, &quot;.uno:GoLeft&quot;, &quot;&quot;, 0, args2())
     Next iCount
 end sub
@@ -132,19 +132,10 @@ sub VecteurCoordonnees REM M5
 	rem ----------------------------------------------------------------------
 	dim args1(0) as new com.sun.star.beans.PropertyValue
 	args1(0).Name = &quot;Text&quot;
-	args1(0).Value = &quot;widevec {AB} left( matrix { x_B - x_A ## y_B - y_A } right)&quot; REM Revenir 2 fois en arrière
+	args1(0).Value = &quot;widevec {AB} left( matrix { x_B - x_A ## y_B - y_A } right)&quot; REM Revenir 0 fois en arrière
 
 	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
 
-	rem ----------------------------------------------------------------------
-	dim args2(1) as new com.sun.star.beans.PropertyValue
-	args2(0).Name = &quot;Count&quot;
-	args2(0).Value = 1
-	args2(1).Name = &quot;Select&quot;
-	args2(1).Value = false
-	For iCount = 1 To 2
-       	dispatcher.executeDispatch(document, &quot;.uno:GoLeft&quot;, &quot;&quot;, 0, args2())
-    Next iCount
 end sub
 
 
@@ -226,7 +217,7 @@ sub Implication REM M9
 	rem ----------------------------------------------------------------------
 	dim args1(0) as new com.sun.star.beans.PropertyValue
 	args1(0).Name = &quot;Text&quot;
-	args1(0).Value = &quot;si A drarrow B et B drarrow C, alors A drarrow C&quot; REM Revenir 0 fois en arrière
+	args1(0).Value = &quot;A drarrow B&quot; REM Revenir 0 fois en arrière
 
 	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
 end sub
@@ -244,7 +235,7 @@ sub Equivalence REM M10
 	rem ----------------------------------------------------------------------
 	dim args1(0) as new com.sun.star.beans.PropertyValue
 	args1(0).Name = &quot;Text&quot;
-	args1(0).Value = &quot;2x – 2 = 0 dlrarrow x = 1&quot; REM Revenir 0 fois en arrière
+	args1(0).Value = &quot;A dlrarrow B&quot; REM Revenir 0 fois en arrière
 
 	dispatcher.executeDispatch(document, &quot;.uno:InsertText&quot;, &quot;&quot;, 0, args1())
 end sub
