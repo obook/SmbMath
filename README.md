@@ -4,6 +4,8 @@ This extension is experimental, keep a copy of your documents before using it. T
 
 Download last release : https://github.com/obook/SmbMath/raw/main/smbmath.oxt
 
+Download LibreOffice : https://www.libreoffice.org/download/
+
 <hr>
 
 <p align="center">
