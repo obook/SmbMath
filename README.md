@@ -1,4 +1,9 @@
 # SmbMath
+
+<p align="center">
+    <a href='https://www.smb33.fr/' target='_blank'><img src="./src/icons/logo.svg"  width="120"></a>
+</p>
+
 Extension LibreOffice Writer : Outils mathématiques pour l'Ensemble Scolaire Sainte-Marie Bastide à Bordeaux.
 This extension is experimental, keep a copy of your documents before using it. The creator cannot be held responsible for the loss of data.
 
