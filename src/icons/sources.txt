@@ -1,2 +1,4 @@
 Online LaTeX to SVG : https://viereck.ch/latex-to-svg/
+Then, add inkscape-background.svg with InkScape.
 
+OBOOK 15082023
