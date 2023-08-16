@@ -191,12 +191,39 @@
 
       </node>
 
-      <!-- Menubar -->
+      <!-- Menubar Math (futur use)
+
+      <node oor:name="OfficeMenuBar">
+            <node oor:name="SmbMath.OfficeMenu.Math" oor:op="replace">
+                  <prop oor:name="Context" oor:type="xs:string">
+                        <value>com.sun.star.formula.FormulaProperties</value>
+                  </prop>
+                  <prop oor:name="Title" oor:type="xs:string">
+                              <value>SmbMath</value>
+                  </prop>
+                  <node oor:name="Submenu">
+                        <node oor:name="F99" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Options</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.Main</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                  </node>
+            </node>
+      </node>
+      -->
+
+      <!-- Menubar Writer -->
 
       <node oor:name="OfficeMenuBar">
             <node oor:name="SmbMath.OfficeMenuBar" oor:op="replace">
                   <prop oor:name="Context" oor:type="xs:string">
-                           <value>com.sun.star.text.TextDocument</value>
+                        <value>com.sun.star.text.TextDocument</value>
                   </prop>
                   <prop oor:name="Title" oor:type="xs:string">
                               <value>SmbMath</value>
