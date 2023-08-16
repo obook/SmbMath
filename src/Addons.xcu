@@ -13,10 +13,10 @@
                      </prop>
                      <node oor:name="UserDefinedImages">
                               <prop oor:name="ImageSmallURL">
-                                    <value>%origin%/icons/icon.svg</value>
+                                    <value>%origin%/icons/options.svg</value>
                               </prop>
                               <prop oor:name="ImageBigURL">
-                                    <value>%origin%/icons/icon.svg</value>
+                                    <value>%origin%/icons/options.svg</value>
                               </prop>
                      </node>
             </node>
@@ -191,45 +191,6 @@
 
       </node>
 
-
-      <!-- Toolbar , l'ordre est alphabétique du Title -->
-
-      <node oor:name="OfficeToolBar"> <!-- Les réglages sont dans WriterWindowState.xcu , mais elle s'appelle "Add-on 5" !! -->
-            <node oor:name="SmbMath.OfficeToolBar" oor:op="replace"> <!-- Une barre d'outils -->
-                  <prop oor:name="Title" oor:type="xs:string"> <!-- Test, mais je crois que cela ne change pas le nom de la barre d'outils -->
-                        <value>Barre d'outils SmbMath</value>
-                  </prop>
-                  <node oor:name="SmbMath.OfficeToolBar.button1" oor:op="replace"> <!-- Un bouton -->
-                              <prop oor:name="Context" oor:type="xs:string">
-                                    <value>com.sun.star.text.TextDocument</value>
-                              </prop>
-                              <prop oor:name="URL" oor:type="xs:string">
-                                    <value>.uno:InsertObjectStarMath</value>
-                              </prop>
-                              <prop oor:name="Target" oor:type="xs:string">
-                                    <value>_self</value>
-                              </prop>
-                              <prop oor:name="Title" oor:type="xs:string"> <!-- Nom qui apparait en survolant le bouton -->
-                                    <value>Transformer le texte en formule</value>
-                              </prop>
-                     </node>
-                  <node oor:name="SmbMath.OfficeToolBar.button2" oor:op="replace"> <!-- Un bouton -->
-                              <prop oor:name="Context" oor:type="xs:string">
-                                    <value>com.sun.star.text.TextDocument</value>
-                              </prop>
-                              <prop oor:name="URL" oor:type="xs:string">
-                                    <value>macro:///SmbMath.MainModule.Main</value>
-                              </prop>
-                              <prop oor:name="Target" oor:type="xs:string">
-                                    <value>_self</value>
-                              </prop>
-                              <prop oor:name="Title" oor:type="xs:string"> <!-- Nom qui apparait en survolant le bouton -->
-                                    <value>À Propos de SmbMath...</value>
-                              </prop>
-                     </node>
-            </node>
-      </node>
-
       <!-- Menubar -->
 
       <node oor:name="OfficeMenuBar">
@@ -379,6 +340,17 @@
                               </prop>
                               <prop oor:name="URL">
                                           <value>macro:///SmbMath.MainModule.Indice</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                        <node oor:name="M99" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Options</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.Main</value>
                               </prop>
                               <prop oor:name="Target" oor:type="xs:string">
                                           <value>_self</value>

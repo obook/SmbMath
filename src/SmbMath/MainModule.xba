@@ -2,15 +2,63 @@
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="MainModule" script:language="StarBasic" script:moduleType="normal">REM  *****  BASIC  *****
 
+Global PGM_INIT as Boolean
+Global GLOBAL_MAKE_OLE as Integer &apos; 0 = NO insert OLE ; 1 = insert OLE
+
 Sub Main
-	MsgBox &quot;(C) O. Booklage 2023&quot;
+
+	If PGM_INIT &lt;&gt; True Then
+		GLOBAL_MAKE_OLE = 0
+		PGM_INIT = True
+	End If
+
+	ShowDialog
+	
 End Sub
+
+REM ######################################## DialBox
+
+Global oDialog As Object
+
+private Function LoadDialog(Libname as String, DialogName as String, Optional oLibContainer)
+Dim oLib as Object &apos; com.sun.star.script.XLibraryContainer
+Dim oLibDialog as Object
+Dim oRuntimeDialog as Object
+    If IsMissing(oLibContainer) Then
+        oLibContainer = DialogLibraries
+    End If
+    oLibContainer.LoadLibrary(LibName)
+    oLib = oLibContainer.GetByName(Libname)
+    oLibDialog = oLib.GetByName(DialogName)
+    oRuntimeDialog = CreateUnoDialog(oLibDialog)
+    LoadDialog() = oRuntimeDialog
+End Function
+
+private Sub ButtonValidation
+	oControl = oDialog.GetControl(&quot;IdCheckBoxOLE&quot;)
+	GLOBAL_MAKE_OLE = oControl.State
+	oDialog.endexecute
+End Sub
+
+private Sub ShowDialog
+    oDialog = LoadDialog(&quot;SmbMath&quot;, &quot;Dialog&quot;)
+    oDialog.Title = &quot;Options SmbMath&quot;
+	oControl = oDialog.GetControl(&quot;IdCheckBoxOLE&quot;)
+	oControl.State = GLOBAL_MAKE_OLE
+    oDialog.Execute()
+End Sub
+
+&apos; ***************************************************************************** Code insertion
 
 Sub Formule(pFormula as String, Optional rewind as Integer)
 
 	If IsMissing(rewind) Then rewind = 0
 	
-	EcritureFormule(pFormula, rewind)
+	If GLOBAL_MAKE_OLE = 0 Then
+		EcritureFormule(pFormula, rewind)
+	Else
+		InsertionFormule(pFormula)
+	EndIf
 
 End Sub
 
@@ -48,7 +96,7 @@ Sub EcritureFormule(pFormula as String, Optional rewind as Integer)
     
 End Sub
 
-&apos; For futur use *****************************************************************************
+&apos; ***************************************************************************** Object OLE insertion
 &apos; Source : Pierre-Yves Samyn https://listarchives.libreoffice.org/fr/users/2014/msg00501.html
 &apos; Source : 谢宝良 http://forum.ubuntu.org.cn/viewtopic.php?f=35&amp;t=400116
 Sub InsertionFormule(Optional pFormula as String)
