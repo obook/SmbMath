@@ -7,6 +7,10 @@ Global GLOBAL_MAKE_OLE as Integer &apos; 0 = NO insert OLE ; 1 = insert OLE
 
 Sub Main
 
+	&apos;Dim oSystemInfo as Variant
+	&apos;oSystemInfo = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+	&apos;MsgBox oSystemInfo.MakeOLE
+
 	If PGM_INIT &lt;&gt; True Then
 		GLOBAL_MAKE_OLE = 0
 		PGM_INIT = True
@@ -16,7 +20,44 @@ Sub Main
 	
 End Sub
 
-REM ######################################## DialBox
+&apos; ######################################## Configuration
+
+Function GetConfigAccess( ByVal cNodePath As String, Optional bWriteAccess, Optional bEnableSync, Optional bLazyWrite ) As Object
+   If IsMissing( bWriteAccess ) Then
+      bWriteAccess = False
+   EndIf
+   If IsMissing( bEnableSync ) Then
+      bEnableSync = True
+   EndIf
+   If IsMissing( bLazyWrite ) Then
+      bLazyWrite = False
+   EndIf
+
+   oConfigProvider = GetProcessServiceManager().createInstanceWithArguments(&quot;com.sun.star.configuration.ConfigurationProvider&quot;, Array( MakePropertyValue( &quot;enableasync&quot;, bEnableSync ) ) )
+   
+   If bWriteAccess Then
+      cServiceName = &quot;com.sun.star.configuration.ConfigurationUpdateAccess&quot;
+   Else
+      cServiceName = &quot;com.sun.star.configuration.ConfigurationAccess&quot;
+   EndIf
+   
+   oConfigAccess = oConfigProvider.createInstanceWithArguments( cServiceName, Array( MakePropertyValue( &quot;nodepath&quot;, cNodePath ), MakePropertyValue( &quot;lazywrite&quot;, bLazyWrite ) ) )
+   
+   GetConfigAccess() = oConfigAccess
+End Function
+
+Function MakePropertyValue( Optional cName As String, Optional uValue ) As com.sun.star.beans.PropertyValue
+   oPropertyValue = createUnoStruct( &quot;com.sun.star.beans.PropertyValue&quot; )
+   If Not IsMissing( cName ) Then
+      oPropertyValue.Name = cName
+   EndIf
+   If Not IsMissing( uValue ) Then
+      oPropertyValue.Value = uValue
+   EndIf
+   MakePropertyValue() = oPropertyValue
+End Function 
+
+&apos; ######################################## DialBox
 
 Global oDialog As Object
 

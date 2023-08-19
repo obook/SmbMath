@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<oor:component-data xmlns:oor="http://openoffice.org/2001/registry"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	oor:name="Registry" oor:package="com.obooklage.smbmath">
+        <node oor:name="ProductInfo">
+                <prop oor:name="ProductName" oor:type="xs:string">
+                        <value>SMB33 Math Extension</value>
+                </prop>
+	</node>
+        <node oor:name="SystemInfo">
+		<prop oor:name="MakeOLE" oor:type="xs:string">
+			<value>FALSE</value>
+		</prop>
+	</node>
+</oor:component-data>
