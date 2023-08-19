@@ -203,6 +203,20 @@
                      </node>
             </node>
 
+            <node oor:name="com.obooklage.smbmath.image_operations" oor:op="replace">
+                     <prop oor:name="URL" oor:type="xs:string">
+                              <value>macro:///SmbMath.MainModule.Operations</value>
+                     </prop>
+                     <node oor:name="UserDefinedImages">
+                              <prop oor:name="ImageSmallURL">
+                                    <value>%origin%/icons/operations.svg</value>
+                              </prop>
+                              <prop oor:name="ImageBigURL">
+                                    <value>%origin%/icons/operations.svg</value>
+                              </prop>
+                     </node>
+            </node>
+
       </node>
 
       <!-- Menubar Math (futur use)
@@ -392,6 +406,17 @@
                               </prop>
                               <prop oor:name="URL">
                                           <value>macro:///SmbMath.MainModule.Fonction</value>
+                              </prop>
+                              <prop oor:name="Target" oor:type="xs:string">
+                                          <value>_self</value>
+                              </prop>
+                        </node>
+                        <node oor:name="M14" oor:op="replace">
+                              <prop oor:name="Title">
+                                          <value>Opérations</value>
+                              </prop>
+                              <prop oor:name="URL">
+                                          <value>macro:///SmbMath.MainModule.Operations</value>
                               </prop>
                               <prop oor:name="Target" oor:type="xs:string">
                                           <value>_self</value>

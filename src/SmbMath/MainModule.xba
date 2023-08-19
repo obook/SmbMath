@@ -207,5 +207,12 @@ Sub Fonction &apos; M13
 	
 End Sub
 
+Sub Operations &apos; M14
+
+	pFormula = Chr(34)+Chr(34)+&quot;A=1 + 2 - 3 times 4 div 5&quot;
+	Formule(pFormula)
+	
+End Sub
+
 
 </script:module>
