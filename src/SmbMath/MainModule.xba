@@ -246,7 +246,7 @@ End Sub
 
 Sub Fonction &apos; M13
 
-	pFormula =  &quot;f:x ↦ 2x+3&quot;
+	pFormula =  &quot;f:x&quot; + Chr(34)+&quot;↦&quot; + Chr(34) + &quot;2x+3&quot;
 	Formule(pFormula)
 	
 End Sub
