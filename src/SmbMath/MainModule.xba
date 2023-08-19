@@ -200,6 +200,12 @@ Sub Indice &apos; M12
 	
 End Sub
 
+Sub Fonction &apos; M13
+
+	pFormula =  &quot;f:x ↦ 2x+3&quot;
+	Formule(pFormula)
+	
+End Sub
 
 
 </script:module>
