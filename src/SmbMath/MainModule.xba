@@ -4,16 +4,16 @@
 
 Global PGM_INIT as Boolean
 Global GLOBAL_MAKE_OLE as Integer &apos; 0 = NO insert OLE ; 1 = insert OLE
+Global GLOBAL_SYSINFO as Variant  &apos; Configuration
 
 Sub Main
 
-	&apos;Dim oSystemInfo as Variant
-	&apos;oSystemInfo = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
-	&apos;MsgBox oSystemInfo.MakeOLE
-
 	If PGM_INIT &lt;&gt; True Then
-		GLOBAL_MAKE_OLE = 0
+
+		GLOBAL_SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+		GLOBAL_MAKE_OLE = GLOBAL_SYSINFO.MakeOLE
 		PGM_INIT = True
+			
 	End If
 
 	ShowDialog
@@ -21,7 +21,7 @@ Sub Main
 End Sub
 
 &apos; ######################################## Configuration
-
+&apos; Source :  jeromeC 07 juin 2006 23:28 https://forum.openoffice.org/fr/forum/viewtopic.php?t=1494
 Function GetConfigAccess( ByVal cNodePath As String, Optional bWriteAccess, Optional bEnableSync, Optional bLazyWrite ) As Object
    If IsMissing( bWriteAccess ) Then
       bWriteAccess = False
@@ -78,6 +78,9 @@ End Function
 private Sub ButtonValidation
 	oControl = oDialog.GetControl(&quot;IdCheckBoxOLE&quot;)
 	GLOBAL_MAKE_OLE = oControl.State
+	GLOBAL_SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+	GLOBAL_SYSINFO.MakeOLE = GLOBAL_MAKE_OLE
+	GLOBAL_SYSINFO.commitChanges()
 	oDialog.endexecute
 End Sub
 
