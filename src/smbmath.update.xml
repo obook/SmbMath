@@ -5,7 +5,7 @@ xmlns:xlink="https://www.w3.org/1999/xlink">
   <display-name>
     <name>SMB33 Math Extension</name>
   </display-name>
-  <version value="1.3" />
+  <version value="1.4" />
   <update-download>
     <src xlink:href="https://github.com/obook/SmbMath/raw/main/smbmath.oxt" />
   </update-download>

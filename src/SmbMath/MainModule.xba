@@ -3,17 +3,11 @@
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="MainModule" script:language="StarBasic" script:moduleType="normal">REM  *****  BASIC  *****
 
 Global PGM_INIT as Boolean
-Global GLOBAL_MAKE_OLE as Integer &apos; 0 = NO insert OLE ; 1 = insert OLE
-Global GLOBAL_SYSINFO as Variant  &apos; Configuration
 
 Sub Main
 
 	If PGM_INIT &lt;&gt; True Then
-
-		GLOBAL_SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
-		GLOBAL_MAKE_OLE = GLOBAL_SYSINFO.MakeOLE
 		PGM_INIT = True
-			
 	End If
 
 	ShowDialog
@@ -22,6 +16,7 @@ End Sub
 
 &apos; ######################################## Configuration
 &apos; Source :  jeromeC 07 juin 2006 23:28 https://forum.openoffice.org/fr/forum/viewtopic.php?t=1494
+
 Function GetConfigAccess( ByVal cNodePath As String, Optional bWriteAccess, Optional bEnableSync, Optional bLazyWrite ) As Object
    If IsMissing( bWriteAccess ) Then
       bWriteAccess = False
@@ -57,6 +52,19 @@ Function MakePropertyValue( Optional cName As String, Optional uValue ) As com.s
    MakePropertyValue() = oPropertyValue
 End Function 
 
+Function GetOptionOLE()
+Dim SYSINFO as Variant
+	SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+	GetOptionOle = SYSINFO.MakeOLE
+End Function
+
+Sub SetOptionOLE( Ole as Integer)
+Dim SYSINFO as Variant
+	SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+	SYSINFO.MakeOLE = Ole
+	SYSINFO.commitChanges()
+End Sub
+
 &apos; ######################################## DialBox
 
 Global oDialog As Object
@@ -77,10 +85,7 @@ End Function
 
 private Sub ButtonValidation
 	oControl = oDialog.GetControl(&quot;IdCheckBoxOLE&quot;)
-	GLOBAL_MAKE_OLE = oControl.State
-	GLOBAL_SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
-	GLOBAL_SYSINFO.MakeOLE = GLOBAL_MAKE_OLE
-	GLOBAL_SYSINFO.commitChanges()
+	SetOptionOLE(oControl.State)
 	oDialog.endexecute
 End Sub
 
@@ -88,20 +93,21 @@ private Sub ShowDialog
     oDialog = LoadDialog(&quot;SmbMath&quot;, &quot;Dialog&quot;)
     oDialog.Title = &quot;Options SmbMath&quot;
 	oControl = oDialog.GetControl(&quot;IdCheckBoxOLE&quot;)
-	oControl.State = GLOBAL_MAKE_OLE
+	oControl.State = GetOptionOLE()
     oDialog.Execute()
 End Sub
 
 &apos; ***************************************************************************** Code insertion
 
 Sub Formule(pFormula as String, Optional rewind as Integer)
+Dim GLOBAL_SYSINFO as Variant
 
 	If IsMissing(rewind) Then rewind = 0
-	
-	If GLOBAL_MAKE_OLE = 0 Then
-		EcritureFormule(pFormula, rewind)
-	Else
+		
+	If  GetOptionOLE() Then
 		InsertionFormule(pFormula)
+	Else
+		EcritureFormule(pFormula, rewind)
 	EndIf
 
 End Sub
