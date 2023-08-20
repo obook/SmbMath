@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<oor:component-data xmlns:oor="http://openoffice.org/2001/registry"
- xmlns:xs="http://www.w3.org/2001/XMLSchema"
- oor:name="Addons" oor:package="org.openoffice.Office">
+<oor:component-data xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" oor:name="Addons" oor:package="org.openoffice.Office">
    <node oor:name="AddonUI">
 
       <!-- Images -->
@@ -254,24 +252,21 @@
                         <value>com.sun.star.text.TextDocument</value>
                   </prop>
                   <prop oor:name="Title" oor:type="xs:string">
-                              <value>SmbMath</value>
+                        <value>SmbMath</value>
                   </prop>
 
                   <node oor:name="Submenu">
 
                         <!-- Item 01 -->
                         <node oor:name="item01" oor:op="replace">
-                              <prop oor:name="Context" oor:type="xs:string">
-                                    <value>com.sun.star.text.TextDocument</value>
-                              </prop>
                               <prop oor:name="Title">
-                                          <value>Insérer Formule</value>
+                                    <value>Insérer Formule</value>
                               </prop>
                               <prop oor:name="URL">
-                                          <value>.uno:InsertObjectStarMath</value>
+                                    <value>.uno:InsertObjectStarMath</value>
                               </prop>
                               <prop oor:name="Target" oor:type="xs:string">
-                                          <value>_self</value>
+                                    <value>_self</value>
                               </prop>
                         </node>
 
@@ -283,10 +278,23 @@
                               <prop oor:name="Target" oor:type="xs:string">
                                     <value>_self</value>
                               </prop>
+                              <prop oor:name="URL" oor:type="xs:string">
+                                    <value>XXX</value>
+                              </prop>
+                              <prop oor:name="ImageIdentifier" oor:type="xs:string"> <!-- Ne fonctionne pas -->
+                                    <value>%origin%/icons/fonction.svg</value>
+                              </prop>
 
-                              <!-- Sous-Item 02 -->
+                              <!-- Sous-Items 02 -->
 
                               <node oor:name="Submenu">
+
+                                    <prop oor:name="ImageIdentifier" oor:type="xs:string"> <!-- Ne fonctionne pas -->
+                                          <value>%origin%/icons/fonction.svg</value>
+                                    </prop>
+                                    <prop oor:name="URL" oor:type="xs:string">
+                                          <value>XXX</value>
+                                    </prop>
 
                                     <node oor:name="item02.M1" oor:op="replace">
                                           <prop oor:name="Title">
@@ -300,7 +308,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M2" oor:op="replace">
+                                    <node oor:name="item02.M2" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Racine carrée</value>
                                           </prop>
@@ -312,7 +320,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M3" oor:op="replace">
+                                    <node oor:name="item02.M3" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Expression</value>
                                           </prop>
@@ -324,7 +332,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M4" oor:op="replace">
+                                    <node oor:name="item02.M4" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Vecteur</value>
                                           </prop>
@@ -336,7 +344,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M5" oor:op="replace">
+                                    <node oor:name="item02.M5" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Vecteur Coordonnées</value>
                                           </prop>
@@ -348,7 +356,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M6" oor:op="replace">
+                                    <node oor:name="item02.M6" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Angle</value>
                                           </prop>
@@ -360,7 +368,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M7" oor:op="replace">
+                                    <node oor:name="item02.M7" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Ensembles</value>
                                           </prop>
@@ -372,7 +380,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M8" oor:op="replace">
+                                    <node oor:name="item02.M8" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Système</value>
                                           </prop>
@@ -384,7 +392,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M9" oor:op="replace">
+                                    <node oor:name="item02.M9" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Implication</value>
                                           </prop>
@@ -396,7 +404,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M10" oor:op="replace">
+                                    <node oor:name="item02.M10" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Équivalence</value>
                                           </prop>
@@ -408,7 +416,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M11" oor:op="replace">
+                                    <node oor:name="item02.M11" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Exposant</value>
                                           </prop>
@@ -420,7 +428,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M12" oor:op="replace">
+                                    <node oor:name="item02.M12" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Indice</value>
                                           </prop>
@@ -432,7 +440,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M13" oor:op="replace">
+                                    <node oor:name="item02.M13" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Fonction</value>
                                           </prop>
@@ -444,7 +452,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="M14" oor:op="replace">
+                                    <node oor:name="item02.M14" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Opérations</value>
                                           </prop>
@@ -464,17 +472,14 @@
 
                         <!-- Item 03 -->
                         <node oor:name="item03" oor:op="replace">
-                              <prop oor:name="Context" oor:type="xs:string">
-                                    <value>com.sun.star.text.TextDocument</value>
-                              </prop>
                               <prop oor:name="Title">
-                                          <value>Options</value>
+                                    <value>Options</value>
                               </prop>
                               <prop oor:name="URL">
-                                          <value>macro:///SmbMath.MainModule.Main</value>
+                                    <value>macro:///SmbMath.MainModule.Main</value>
                               </prop>
                               <prop oor:name="Target" oor:type="xs:string">
-                                          <value>_self</value>
+                                    <value>_self</value>
                               </prop>
                         </node>
 
