@@ -55,7 +55,7 @@ End Function
 Function GetOptionOLE()
 Dim SYSINFO as Variant
 	SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
-	GetOptionOle = SYSINFO.MakeOLE
+	GetOptionOLE = SYSINFO.MakeOLE
 End Function
 
 Sub SetOptionOLE( Ole as Integer)
