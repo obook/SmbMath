@@ -264,5 +264,9 @@ Sub Operations &apos; M14
 	
 End Sub
 
+Sub Comparaison &apos;M15
+	pFormula = &quot;a geslant x ; b leslant y ; c &gt; 0 ; d &lt; 0&quot;
+	Formule(pFormula)
+End Sub
 
 </script:module>

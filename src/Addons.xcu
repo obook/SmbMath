@@ -215,6 +215,20 @@
                      </node>
             </node>
 
+            <node oor:name="com.obooklage.smbmath.image_comparaison" oor:op="replace">
+                     <prop oor:name="URL" oor:type="xs:string">
+                              <value>macro:///SmbMath.MainModule.Comparaison</value>
+                     </prop>
+                     <node oor:name="UserDefinedImages">
+                              <prop oor:name="ImageSmallURL">
+                                    <value>%origin%/icons/comparaison.svg</value>
+                              </prop>
+                              <prop oor:name="ImageBigURL">
+                                    <value>%origin%/icons/comparaison.svg</value>
+                              </prop>
+                     </node>
+            </node>
+
       </node>
 
       <!-- Menubar Math (futur use)
@@ -273,7 +287,7 @@
                         <!-- Item 02 -->
                         <node oor:name="item02" oor:op="replace">
                               <prop oor:name="Title" oor:type="xs:string">
-                                    <value>Exemples</value>
+                                    <value>Formulaires</value>
                               </prop>
                               <prop oor:name="Target" oor:type="xs:string">
                                     <value>_self</value>
@@ -464,7 +478,17 @@
                                           </prop>
                                     </node>
 
-
+                                    <node oor:name="item02.M15" oor:op="replace">
+                                          <prop oor:name="Title">
+                                                      <value>Comparaison</value>
+                                          </prop>
+                                          <prop oor:name="URL">
+                                                      <value>macro:///SmbMath.MainModule.Comparaison</value>
+                                          </prop>
+                                          <prop oor:name="Target" oor:type="xs:string">
+                                                      <value>_self</value>
+                                          </prop>
+                                    </node>
 
                               </node>
 
