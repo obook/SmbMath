@@ -189,7 +189,7 @@ End Sub
 
 Sub Vecteur &apos; M4
 
-	pFormula = &quot;widevec{AB}&quot;
+	pFormula = &quot;widevec{AC} = widevec{AB}-widevec{CB}&quot;
 	Formule(pFormula, 1)
 	
 End Sub
@@ -268,5 +268,11 @@ Sub Comparaison &apos;M15
 	pFormula = &quot;a geslant x ; b leslant y ; c &gt; 0 ; d &lt; 0&quot;
 	Formule(pFormula)
 End Sub
+
+Sub Relation &apos;M16
+	pFormula = &quot;%alpha in setR bslash \{  3 \} , %bêta notin \[ 0 ; + infinity \[ , setQ nsubset setZ&quot;
+	Formule(pFormula)
+End Sub
+
 
 </script:module>
