@@ -1,5 +1,5 @@
 echo on
-set EXTENSION="smbmath_win64.oxt"
+set EXTENSION="smbmath.oxt"
 del /Q %EXTENSION%
 cd /D src/
 zip -r ../%EXTENSION% *
