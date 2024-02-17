@@ -90,7 +90,7 @@ private Sub ButtonValidation
 End Sub
 
 private Sub ShowDialog
-    oDialog = LoadDialog(&quot;SmbMath&quot;, &quot;Dialog&quot;)
+    oDialog = LoadDialog(&quot;SmbMath&quot;, &quot;OptionsDialog&quot;)
     oDialog.Title = &quot;Options SmbMath&quot;
 	oControl = oDialog.GetControl(&quot;IdCheckBoxOLE&quot;)
 	oControl.State = GetOptionOLE()
@@ -238,7 +238,7 @@ End Sub
 
 Sub Exposant &apos; M11
 
-	pFormula =  &quot;A^{ n } = {A times A  times ... times A} underbrace {n facteurs} &quot;
+	pFormula =  &quot;A^{ B }&quot;
 	Formule(pFormula, 2)
 	
 End Sub

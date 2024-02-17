@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
+<script:module xmlns:script="http://openoffice.org/2000/script" script:name="SyncModule" script:language="StarBasic" script:moduleType="normal">&apos;  *****  BASIC  *****
+&apos; (C) obooklage 26072023
+&apos; Original post from  http://forum.ubuntu.org.cn/viewtopic.php?f=35&amp;t=400116
+&apos; Install &quot;CMU Serif&quot; fonts in ttf folder of https://www.checkmyworking.com/cm-web-fonts/
+
+Global DEFAULT_FONT_FAMILY as String
+Global FONT_FAMILY as String
+
+Global DEFAULT_FONT_SIZE as Integer
+Global FONT_SIZE as Integer
+
+Global DEFAULT_EXPOSANT_PERCENT as Integer
+Global EXPOSANT_PERCENT as Integer
+
+Global DEFAULT_LIMIT_PERCENT as Integer
+Global LIMIT_PERCENT as Integer
+
+Global PGM_INIT as Boolean
+
+Sub Main
+
+	DEFAULT_FONT_FAMILY = &quot;CMU Serif&quot;        REM Windows ET Linux (2023)
+	DEFAULT_FONT_SIZE = 12
+	DEFAULT_EXPOSANT_PERCENT = 65
+	DEFAULT_LIMIT_PERCENT = 65
+
+	iF PGM_INIT &lt;&gt; True Then
+		FONT_FAMILY = DEFAULT_FONT_FAMILY
+		FONT_SIZE = DEFAULT_FONT_SIZE
+		EXPOSANT_PERCENT = DEFAULT_EXPOSANT_PERCENT
+		LIMIT_PERCENT = DEFAULT_LIMIT_PERCENT
+		PGM_INIT = True
+	End If
+
+	ShowSyncDialog
+
+End Sub
+
+&apos; ######################################## DialBox
+
+Global oSyncDialog As Object
+
+private Function LoadDialog(Libname as String, DialogName as String, Optional oLibContainer)
+Dim oLib as Object &apos; com.sun.star.script.XLibraryContainer
+Dim oLibDialog as Object
+Dim oRuntimeDialog as Object
+    If IsMissing(oLibContainer) Then
+        oLibContainer = DialogLibraries
+    End If
+    oLibContainer.LoadLibrary(LibName)
+    oLib = oLibContainer.GetByName(Libname)
+    oLibDialog = oLib.GetByName(DialogName)
+    oRuntimeDialog = CreateUnoDialog(oLibDialog)
+    LoadDialog() = oRuntimeDialog
+End Function
+
+private Sub ShowSyncDialog
+    oSyncDialog = LoadDialog(&quot;SmbMath&quot;, &quot;SyncDialog&quot;)
+    oSyncDialog.Title = &quot;Syncroniser&quot;
+    oSyncDialog.GetControl(&quot;IdFontName&quot;).Text = GetOption_FONT_FAMILY()
+    oSyncDialog.GetControl(&quot;IdFontSize&quot;).Text = GetOption_FONT_SIZE()
+    oSyncDialog.GetControl(&quot;IdExpoPercent&quot;).Text = GetOption_EXPOSANT_PERCENT()
+    oSyncDialog.GetControl(&quot;IdLimitPercent&quot;).Text = GetOption_LIMIT_PERCENT()
+    oSyncDialog.Execute()
+End Sub
+
+private Sub ButtonSyncDialog
+	FONT_FAMILY = oSyncDialog.GetControl(&quot;IdFontName&quot;).Text
+	FONT_SIZE = oSyncDialog.GetControl(&quot;IdFontSize&quot;).Text
+	EXPOSANT_PERCENT = oSyncDialog.GetControl(&quot;IdExpoPercent&quot;).Text
+	LIMIT_PERCENT = oSyncDialog.GetControl(&quot;IdLimitPercent&quot;).Text
+	oSyncDialog.endexecute
+	
+	&apos; Save configuration
+	SetOption_FONT_FAMILY(FONT_FAMILY)
+	SetOption_FONT_SIZE(FONT_SIZE)
+	SetOption_EXPOSANT_PERCENT(EXPOSANT_PERCENT)
+	SetOption_LIMIT_PERCENT(LIMIT_PERCENT)
+	
+	Synchronize(FONT_FAMILY, FONT_SIZE, EXPOSANT_PERCENT, LIMIT_PERCENT)
+End Sub
+
+private Sub ButtonFillDefault()
+    oSyncDialog.GetControl(&quot;IdFontName&quot;).Text = DEFAULT_FONT_FAMILY
+    oSyncDialog.GetControl(&quot;IdFontSize&quot;).Text = DEFAULT_FONT_SIZE
+    oSyncDialog.GetControl(&quot;IdExpoPercent&quot;).Text = DEFAULT_EXPOSANT_PERCENT
+    oSyncDialog.GetControl(&quot;IdLimitPercent&quot;).Text = DEFAULT_LIMIT_PERCENT    	
+End Sub
+
+&apos; ######################################## Configuration
+&apos; Source :  jeromeC 07 juin 2006 23:28 https://forum.openoffice.org/fr/forum/viewtopic.php?t=1494
+
+Function GetConfigAccess( ByVal cNodePath As String, Optional bWriteAccess, Optional bEnableSync, Optional bLazyWrite ) As Object
+   If IsMissing( bWriteAccess ) Then
+      bWriteAccess = False
+   EndIf
+   If IsMissing( bEnableSync ) Then
+      bEnableSync = True
+   EndIf
+   If IsMissing( bLazyWrite ) Then
+      bLazyWrite = False
+   EndIf
+
+   oConfigProvider = GetProcessServiceManager().createInstanceWithArguments(&quot;com.sun.star.configuration.ConfigurationProvider&quot;, Array( MakePropertyValue( &quot;enableasync&quot;, bEnableSync ) ) )
+   
+   If bWriteAccess Then
+      cServiceName = &quot;com.sun.star.configuration.ConfigurationUpdateAccess&quot;
+   Else
+      cServiceName = &quot;com.sun.star.configuration.ConfigurationAccess&quot;
+   EndIf
+   
+   oConfigAccess = oConfigProvider.createInstanceWithArguments( cServiceName, Array( MakePropertyValue( &quot;nodepath&quot;, cNodePath ), MakePropertyValue( &quot;lazywrite&quot;, bLazyWrite ) ) )
+   
+   GetConfigAccess() = oConfigAccess
+End Function
+
+Function MakePropertyValue( Optional cName As String, Optional uValue ) As com.sun.star.beans.PropertyValue
+   oPropertyValue = createUnoStruct( &quot;com.sun.star.beans.PropertyValue&quot; )
+   If Not IsMissing( cName ) Then
+      oPropertyValue.Name = cName
+   EndIf
+   If Not IsMissing( uValue ) Then
+      oPropertyValue.Value = uValue
+   EndIf
+   MakePropertyValue() = oPropertyValue
+End Function 
+
+Function GetOption_FONT_FAMILY()
+Dim SYSINFO as Variant
+	SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+	GetOption_FONT_FAMILY = SYSINFO.FONT_FAMILY
+End Function
+
+Sub SetOption_FONT_FAMILY( Ole as String)
+Dim SYSINFO as Variant
+	SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+	SYSINFO.FONT_FAMILY = Ole
+	SYSINFO.commitChanges()
+End Sub
+
+Function GetOption_FONT_SIZE()
+Dim SYSINFO as Variant
+	SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+	GetOption_FONT_SIZE = SYSINFO.FONT_SIZE
+End Function
+
+Sub SetOption_FONT_SIZE( Ole as Integer)
+Dim SYSINFO as Variant
+	SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+	SYSINFO.FONT_SIZE = Ole
+	SYSINFO.commitChanges()
+End Sub
+
+Function GetOption_EXPOSANT_PERCENT()
+Dim SYSINFO as Variant
+	SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+	GetOption_EXPOSANT_PERCENT = SYSINFO.EXPOSANT_PERCENT
+End Function
+
+Sub SetOption_EXPOSANT_PERCENT( Ole as Integer)
+Dim SYSINFO as Variant
+	SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+	SYSINFO.EXPOSANT_PERCENT = Ole
+	SYSINFO.commitChanges()
+End Sub
+
+Function GetOption_LIMIT_PERCENT()
+Dim SYSINFO as Variant
+	SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+	GetOption_LIMIT_PERCENT = SYSINFO.LIMIT_PERCENT
+End Function
+
+Sub SetOption_LIMIT_PERCENT( Ole as Integer)
+Dim SYSINFO as Variant
+	SYSINFO = GetConfigAccess(&quot;/com.obooklage.smbmath.Registry/SystemInfo&quot;, TRUE)
+	SYSINFO.LIMIT_PERCENT = Ole
+	SYSINFO.commitChanges()
+End Sub
+
+&apos; ######################################## Synchronize all formulas
+
+Function Synchronize(FONT_FAMILY as String, FONT_SIZE as String, EXPOSANT_PERCENT as String, LIMIT_PERCENT as String)
+	&apos; MsgBox &quot;Sync Ok Font=&quot;+FONT_FAMILY+&quot; Size=&quot;+FONT_SIZE
+	&apos; Size of Exposants/indices and Limts
+	EXPOSANT_INDICE_SIZE_PERCENT = 65
+	LIMIT_SIZE_PERCENT = 65
+
+	&apos; ********************************************************************
+
+	FONT_CUSTOM_SERIF = &quot;Cmathscr&quot;
+	FONT_CUSTOM_SERIFSANS = &quot;Cmathcal&quot;
+	FONT_CUSTOM_FIXED = &quot;Courier New&quot;
+
+	&apos; ********************************************************************
+
+	FONT_VARIABLES = FONT_FAMILY
+	FONT_VARIABLES_ITALIC = True
+	FONT_VARIABLES_BOLD = False
+
+	FONT_FUNCTIONS = FONT_FAMILY
+	FONT_FUNCTIONS_ITALIC = False
+	FONT_FUNCTIONS_BOLD = False
+
+	FONT_NUMBERS = FONT_FAMILY
+	FONT_NUMBERS_ITALIC = False
+	FONT_NUMBERS_BOLD = False
+
+	FONT_TEXT = FONT_FAMILY
+	FONT_TEXT_ITALIC = False
+	FONT_TEXT_BOLD = False
+
+	FONT_CUSTOM_ITALIC = False
+	FONT_CUSTOM_BOLD = False
+
+
+	oCurrentController = ThisComponent.getCurrentController()
+	oTextDocument = oCurrentController.Model
+	oEmbeddedObjects = oTextDocument.EmbeddedObjects
+	nEndIndex = oEmbeddedObjects.Count - 1
+
+	for nIndex = 0 to nEndIndex
+	oMathObject = oEmbeddedObjects.getByIndex(nIndex)
+		oModel = oMathObject.Model
+		if (not isNull(oModel)) then
+			if (not isEmpty(oModel)) then
+				if oModel.supportsService(&quot;com.sun.star.formula.FormulaProperties&quot;) then
+					&apos; or if oMathObject.CLSID = &quot;078B7ABA-54FC-8551-6147e776a997&quot; then
+				
+					oModel.BaseFontHeight = FONT_SIZE
+				
+					s=oModel.Formula
+					b=CHR$(34)
+					c=&quot;italic&quot;
+					d=&quot;ital&quot;
+				
+					s = Replace(s,b,&quot;[CHAR34]&quot;)
+					s = Replace(s,c,&quot;&quot;)
+					s = Replace(s,d,&quot;&quot;)
+				
+					&apos; s = Chr(34) +  Chr(34) + s
+				
+					s = Replace(s,&quot;[CHAR34]&quot;,&quot;&quot;+Chr(34))
+				
+					oModel.Formula=s
+				
+					&apos; Variables
+					oModel.FontNameVariables = FONT_VARIABLES
+					oModel.FontVariablesIsItalic = FONT_VARIABLES_ITALIC
+					oModel.FontVariablesIsBold = FONT_VARIABLES_BOLD
+				
+					&apos; Functions
+					oModel.FontNameFunctions = FONT_FUNCTIONS
+					oModel.FontFunctionsIsItalic = FONT_FUNCTIONS_ITALIC
+					oModel.FontFunctionsIsBold = FONT_FUNCTIONS_BOLD
+				
+					&apos; Numbers
+					oModel.FontNameNumbers = FONT_NUMBERS
+					oModel.FontNumbersIsItalic = FONT_NUMBERS_ITALIC
+					oModel.FontNumbersIsBold = FONT_NUMBERS_BOLD
+				
+					&apos; Text
+					oModel.FontNameText = FONT_TEXT
+					oModel.FontTextIsItalic =  FONT_TEXT_ITALIC
+					oModel.FontTextIsBold = FONT_TEXT_BOLD
+				
+					&apos;CustomFontNameSerif
+					oModel.CustomFontNameSerif = FONT_CUSTOM_SERIF
+				
+					&apos;CustomFontNameSans
+					oModel.CustomFontNameSans = FONT_CUSTOM_SERIFSANS
+				
+					&apos;CustomFontNameFixed
+					oModel.CustomFontNameFixed = FONT_CUSTOM_FIXED
+					oModel.FontFixedIsItalic =  FONT_CUSTOM_ITALIC
+					oModel.FontFixedIsBold = FONT_CUSTOM_BOLD
+				
+					rem oModel.RelativeIndexSubscript=52
+					rem oModel.RelativeIndexSuperscript=10
+					oModel.RelativeFontHeightIndices=EXPOSANT_PERCENT
+					oModel.RelativeFontHeightLimits=LIMIT_PERCENT
+				
+					&apos; Update
+					oXCOEO = oMathObject.ExtendedControlOverEmbeddedObject
+				
+					oXCOEO.update()
+				end if &apos; if formula
+			end if &apos; if not empty
+		end if &apos; if not null
+	next nIndex
+	
+	ThisComponent.reformat()
+	
+End Function
+
+&apos; from https://wiki.openoffice.org/wiki/Documentation/BASIC_Guide/Strings_%28Runtime_Library%29
+
+Function Replace(Source As String, Search As String, NewPart As String)
+  Dim Result As String
+  Dim StartPos As Long
+  Dim CurrentPos As Long
+
+  Result = &quot;&quot; rem Chr$(34)
+  StartPos = 1
+  CurrentPos = 1
+
+  If Search = &quot;&quot; Then
+    Result = Source
+  Else
+    Do While CurrentPos &lt;&gt; 0
+      CurrentPos = InStr(StartPos, Source, Search)
+      If CurrentPos &lt;&gt; 0 Then
+        Result = Result + Mid(Source, StartPos, _
+        CurrentPos - StartPos)
+        Result = Result + NewPart
+        StartPos = CurrentPos + Len(Search)
+      Else
+        Result = Result + Mid(Source, StartPos, Len(Source))
+      End If                &apos; Position &lt;&gt; 0
+    Loop
+  End If
+
+  Replace = Result
+End Function
+
+</script:module>
