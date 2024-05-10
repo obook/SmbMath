@@ -33,6 +33,20 @@
                      </node>
             </node>
 
+            <node oor:name="com.obooklage.smbmath.image_Fraction" oor:op="replace">
+                     <prop oor:name="URL" oor:type="xs:string">
+                              <value>macro:///SmbMath.MainModule.FractionInline</value>
+                     </prop>
+                     <node oor:name="UserDefinedImages">
+                              <prop oor:name="ImageSmallURL">
+                                    <value>%origin%/icons/fraction.svg</value>
+                              </prop>
+                              <prop oor:name="ImageBigURL">
+                                    <value>%origin%/icons/fraction.svg</value>
+                              </prop>
+                     </node>
+            </node>
+
             <node oor:name="com.obooklage.smbmath.image_SquareRoot" oor:op="replace">
                      <prop oor:name="URL" oor:type="xs:string">
                               <value>macro:///SmbMath.MainModule.SquareRoot</value>
@@ -352,7 +366,7 @@
                                           <value>XXX</value>
                                     </prop>
 
-                                    <node oor:name="item02.M1" oor:op="replace">
+                                    <node oor:name="item02.M01" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Fraction</value>
                                           </prop>
@@ -364,7 +378,19 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M2" oor:op="replace">
+                                    <node oor:name="item02.M02" oor:op="replace">
+                                          <prop oor:name="Title">
+                                                      <value>Fraction en ligne</value>
+                                          </prop>
+                                          <prop oor:name="URL">
+                                                      <value>macro:///SmbMath.MainModule.FractionInline</value>
+                                          </prop>
+                                          <prop oor:name="Target" oor:type="xs:string">
+                                                      <value>_self</value>
+                                          </prop>
+                                    </node>
+
+                                    <node oor:name="item02.M03" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Racine carrée</value>
                                           </prop>
@@ -376,7 +402,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M3" oor:op="replace">
+                                    <node oor:name="item02.M04" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Expression</value>
                                           </prop>
@@ -388,7 +414,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M4" oor:op="replace">
+                                    <node oor:name="item02.M05" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Vecteur</value>
                                           </prop>
@@ -400,7 +426,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M5" oor:op="replace">
+                                    <node oor:name="item02.M06" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Vecteur Coordonnées</value>
                                           </prop>
@@ -412,7 +438,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M6" oor:op="replace">
+                                    <node oor:name="item02.M07" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Angle</value>
                                           </prop>
@@ -424,7 +450,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M7" oor:op="replace">
+                                    <node oor:name="item02.M08" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Ensembles</value>
                                           </prop>
@@ -436,7 +462,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M8" oor:op="replace">
+                                    <node oor:name="item02.M09" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Système</value>
                                           </prop>
@@ -448,7 +474,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M9" oor:op="replace">
+                                    <node oor:name="item02.M10" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Implication</value>
                                           </prop>
@@ -460,7 +486,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M10" oor:op="replace">
+                                    <node oor:name="item02.M11" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Équivalence</value>
                                           </prop>
@@ -472,7 +498,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M11" oor:op="replace">
+                                    <node oor:name="item02.M12" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Exposant</value>
                                           </prop>
@@ -484,7 +510,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M12" oor:op="replace">
+                                    <node oor:name="item02.M13" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Indice</value>
                                           </prop>
@@ -496,7 +522,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M13" oor:op="replace">
+                                    <node oor:name="item02.M14" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Fonction</value>
                                           </prop>
@@ -508,7 +534,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M14" oor:op="replace">
+                                    <node oor:name="item02.M15" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Opérations</value>
                                           </prop>
@@ -520,7 +546,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M15" oor:op="replace">
+                                    <node oor:name="item02.M16" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Comparaison</value>
                                           </prop>
@@ -532,7 +558,7 @@
                                           </prop>
                                     </node>
 
-                                    <node oor:name="item02.M16" oor:op="replace">
+                                    <node oor:name="item02.M17" oor:op="replace">
                                           <prop oor:name="Title">
                                                       <value>Relation</value>
                                           </prop>

@@ -166,113 +166,119 @@ Sub InsertionFormule(Optional pFormula as String)
 
 End Sub
 
-Sub Fraction &apos; M1
+Sub Fraction
 
-	pFormula = &quot;{ a } over { b }&quot; REM Revenir 11 fois en arrière
+	pFormula = &quot;{ a } over { b }&quot; REM Revenir 13 fois en arrière
 	Formule(pFormula, 13)
 	
 End Sub
 
-Sub SquareRoot &apos; M2
+Sub FractionInline
+
+	pFormula = &quot;size 7 { { a } over { b } }&quot; REM Revenir 15 fois en arrière
+	Formule(pFormula, 15)
+	
+End Sub
+
+Sub SquareRoot
 
 	pFormula = &quot;sqrt{ a }&quot;
 	Formule(pFormula, 2)
 
 End Sub
 
-Sub Expression &apos; M3
+Sub Expression
 
 	pFormula = Chr(34)+Chr(34)+&quot;A={ 3x+1 } newline&quot;
 	Formule(pFormula, 10)
 
 End Sub
 
-Sub Vecteur &apos; M4
+Sub Vecteur
 
 	pFormula = &quot;widevec{AC} = widevec{AB}-widevec{CB}&quot;
 	Formule(pFormula, 1)
 	
 End Sub
 
-Sub VecteurCoordonnees &apos; M5
+Sub VecteurCoordonnees
 
 	pFormula = &quot;widevec {AB} left( matrix { x_B - x_A ## y_B - y_A } right)&quot;
 	Formule(pFormula)
 
 End Sub
 
-Sub Angle &apos; M6
+Sub Angle
 
 	pFormula = &quot;widehat{ABC}&quot;
 	Formule(pFormula, 1)
 
 End Sub
 
-Sub Ensembles &apos; M7
+Sub Ensembles
 
 	pFormula = &quot;setN subset setZ subset D subset setQ subset setR subset setC&quot;
 	Formule(pFormula)
 	
 End Sub
 
-Sub Systeme &apos; M8
+Sub Systeme
 
 	pFormula =  &quot;alignl left lbrace stack{ { 2x + 3y = 7 } # { -3x + 2y = -4 } } right none&quot;
 	Formule(pFormula)
 
 End Sub
 
-Sub Implication &apos; M9
+Sub Implication
 
 	pFormula =  &quot;A drarrow B&quot;
 	Formule(pFormula)
 
 End Sub
 
-Sub Equivalence &apos; M10
+Sub Equivalence
 
 	pFormula =  &quot;A dlrarrow B&quot;
 	Formule(pFormula)
 	
 End Sub
 
-Sub Exposant &apos; M11
+Sub Exposant
 
 	pFormula =  &quot;A^{ B }&quot;
 	Formule(pFormula, 2)
 	
 End Sub
 
-Sub Indice &apos; M12
+Sub Indice
 
 	pFormula =  &quot;A_{ B }&quot;
 	Formule(pFormula)
 	
 End Sub
 
-Sub Fonction &apos; M13
+Sub Fonction
 
 	pFormula =  &quot;f:x&quot; + Chr(34)+&quot;↦&quot; + Chr(34) + &quot;2x+3&quot;
 	Formule(pFormula)
 	
 End Sub
 
-Sub Operations &apos; M14
+Sub Operations
 
 	pFormula = Chr(34)+Chr(34)+&quot;A=1 + 2 - 3 times 4 div 5&quot;
 	Formule(pFormula)
 	
 End Sub
 
-Sub Comparaison &apos;M15
+Sub Comparaison
 	pFormula = &quot;a geslant x ; b leslant y ; c &gt; 0 ; d &lt; 0&quot;
 	Formule(pFormula)
 End Sub
 
-Sub Relation &apos;M16
+Sub Relation
 	pFormula = &quot;%alpha in setR bslash \{  3 \} , %bêta notin \[ 0 ; + infinity \[ , setQ nsubset setZ&quot;
 	Formule(pFormula)
 End Sub
-
 
 </script:module>
