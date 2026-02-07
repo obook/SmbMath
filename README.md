@@ -8,6 +8,8 @@ Extension LibreOffice Writer : Outils mathématiques pour l'Ensemble Scolaire Sa
 
 > **Attention** : cette extension est expérimentale, conservez une copie de vos documents avant de l'utiliser. Le créateur ne peut être tenu responsable de la perte de données.
 
+Télécharger LibreOffice : [en français](https://fr.libreoffice.org/download/telecharger-libreoffice/) | [en anglais](https://www.libreoffice.org/download/)
+
 ## Installation
 
 1. Télécharger la dernière version : [smbmath.oxt](https://github.com/obook/SmbMath/raw/main/smbmath.oxt)
@@ -15,16 +17,15 @@ Extension LibreOffice Writer : Outils mathématiques pour l'Ensemble Scolaire Sa
 3. Cliquer sur **Ajouter** et sélectionner le fichier `smbmath.oxt`
 4. Redémarrer LibreOffice
 
-Télécharger LibreOffice : [en anglais](https://www.libreoffice.org/download/) | [en français](https://fr.libreoffice.org/download/telecharger-libreoffice/)
-
 ## Fonctionnalités
 
 Un menu **SmbMath** est ajouté dans la barre de menus de Writer avec :
 
-- **Insérer Formule** : ouvre l'éditeur StarMath
-- **Formulaires** : insertion rapide de formules prédéfinies (voir ci-dessous)
+- **Insérer Formule** : transformer le texte sélectionné en formule ou ouvre l'éditeur de formules si aucune texte n'est sélectionnée
+- **Formulaire** : insertion rapide de formules prédéfinies (voir ci-dessous)
 - **Synchroniser** : applique une police, une taille et des paramètres uniformes à toutes les formules du document
 - **Options** : choix du mode d'insertion (texte ou objet OLE)
+- **À propos** : information sur l'extension.
 
 ### Formules disponibles
 
