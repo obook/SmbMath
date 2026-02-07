@@ -67,4 +67,4 @@ La police **CMU Serif** (Computer Modern) est recommandée. Elle peut être tél
 
 ## Licence
 
-[GNU General Public License v3](./src/registration/license.txt)
+[Licence SmbMath](./LICENSE.md)
