@@ -17,7 +17,7 @@ Global EXPOSANT_PERCENT as Integer
 Global DEFAULT_LIMIT_PERCENT as Integer
 Global LIMIT_PERCENT as Integer
 
-Global PGM_INIT as Boolean
+Global SYNC_INIT as Boolean
 
 Sub Main
 
@@ -26,12 +26,12 @@ Sub Main
 	DEFAULT_EXPOSANT_PERCENT = 65
 	DEFAULT_LIMIT_PERCENT = 65
 
-	iF PGM_INIT &lt;&gt; True Then
+	iF SYNC_INIT &lt;&gt; True Then
 		FONT_FAMILY = DEFAULT_FONT_FAMILY
 		FONT_SIZE = DEFAULT_FONT_SIZE
 		EXPOSANT_PERCENT = DEFAULT_EXPOSANT_PERCENT
 		LIMIT_PERCENT = DEFAULT_LIMIT_PERCENT
-		PGM_INIT = True
+		SYNC_INIT = True
 	End If
 
 	ShowSyncDialog
@@ -41,20 +41,6 @@ End Sub
 &apos; ######################################## DialBox
 
 Global oSyncDialog As Object
-
-private Function LoadDialog(Libname as String, DialogName as String, Optional oLibContainer)
-Dim oLib as Object &apos; com.sun.star.script.XLibraryContainer
-Dim oLibDialog as Object
-Dim oRuntimeDialog as Object
-    If IsMissing(oLibContainer) Then
-        oLibContainer = DialogLibraries
-    End If
-    oLibContainer.LoadLibrary(LibName)
-    oLib = oLibContainer.GetByName(Libname)
-    oLibDialog = oLib.GetByName(DialogName)
-    oRuntimeDialog = CreateUnoDialog(oLibDialog)
-    LoadDialog() = oRuntimeDialog
-End Function
 
 private Sub ShowSyncDialog
     oSyncDialog = LoadDialog(&quot;SmbMath&quot;, &quot;SyncDialog&quot;)
@@ -88,44 +74,6 @@ private Sub ButtonFillDefault()
     oSyncDialog.GetControl(&quot;IdExpoPercent&quot;).Text = DEFAULT_EXPOSANT_PERCENT
     oSyncDialog.GetControl(&quot;IdLimitPercent&quot;).Text = DEFAULT_LIMIT_PERCENT    	
 End Sub
-
-&apos; ######################################## Configuration
-&apos; Source :  jeromeC 07 juin 2006 23:28 https://forum.openoffice.org/fr/forum/viewtopic.php?t=1494
-
-Function GetConfigAccess( ByVal cNodePath As String, Optional bWriteAccess, Optional bEnableSync, Optional bLazyWrite ) As Object
-   If IsMissing( bWriteAccess ) Then
-      bWriteAccess = False
-   EndIf
-   If IsMissing( bEnableSync ) Then
-      bEnableSync = True
-   EndIf
-   If IsMissing( bLazyWrite ) Then
-      bLazyWrite = False
-   EndIf
-
-   oConfigProvider = GetProcessServiceManager().createInstanceWithArguments(&quot;com.sun.star.configuration.ConfigurationProvider&quot;, Array( MakePropertyValue( &quot;enableasync&quot;, bEnableSync ) ) )
-   
-   If bWriteAccess Then
-      cServiceName = &quot;com.sun.star.configuration.ConfigurationUpdateAccess&quot;
-   Else
-      cServiceName = &quot;com.sun.star.configuration.ConfigurationAccess&quot;
-   EndIf
-   
-   oConfigAccess = oConfigProvider.createInstanceWithArguments( cServiceName, Array( MakePropertyValue( &quot;nodepath&quot;, cNodePath ), MakePropertyValue( &quot;lazywrite&quot;, bLazyWrite ) ) )
-   
-   GetConfigAccess() = oConfigAccess
-End Function
-
-Function MakePropertyValue( Optional cName As String, Optional uValue ) As com.sun.star.beans.PropertyValue
-   oPropertyValue = createUnoStruct( &quot;com.sun.star.beans.PropertyValue&quot; )
-   If Not IsMissing( cName ) Then
-      oPropertyValue.Name = cName
-   EndIf
-   If Not IsMissing( uValue ) Then
-      oPropertyValue.Value = uValue
-   EndIf
-   MakePropertyValue() = oPropertyValue
-End Function 
 
 Function GetOption_FONT_FAMILY()
 Dim SYSINFO as Variant
@@ -181,12 +129,8 @@ End Sub
 
 &apos; ######################################## Synchronize all formulas
 
-Function Synchronize(FONT_FAMILY as String, FONT_SIZE as String, EXPOSANT_PERCENT as String, LIMIT_PERCENT as String)
+Sub Synchronize(FONT_FAMILY as String, FONT_SIZE as String, EXPOSANT_PERCENT as String, LIMIT_PERCENT as String)
 	&apos; MsgBox &quot;Sync Ok Font=&quot;+FONT_FAMILY+&quot; Size=&quot;+FONT_SIZE
-	&apos; Size of Exposants/indices and Limts
-	EXPOSANT_INDICE_SIZE_PERCENT = 65
-	LIMIT_SIZE_PERCENT = 65
-
 	&apos; ********************************************************************
 
 	FONT_CUSTOM_SERIF = &quot;Cmathscr&quot;
@@ -292,7 +236,7 @@ Function Synchronize(FONT_FAMILY as String, FONT_SIZE as String, EXPOSANT_PERCEN
 	
 	ThisComponent.reformat()
 	
-End Function
+End Sub
 
 &apos; from https://wiki.openoffice.org/wiki/Documentation/BASIC_Guide/Strings_%28Runtime_Library%29
 

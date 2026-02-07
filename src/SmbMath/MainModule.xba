@@ -2,16 +2,10 @@
 <!DOCTYPE script:module PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "module.dtd">
 <script:module xmlns:script="http://openoffice.org/2000/script" script:name="MainModule" script:language="StarBasic" script:moduleType="normal">REM  *****  BASIC  *****
 
-Global PGM_INIT as Boolean
-
 Sub Main
 
-	If PGM_INIT &lt;&gt; True Then
-		PGM_INIT = True
-	End If
-
 	ShowDialog
-	
+
 End Sub
 
 &apos; ######################################## Configuration
@@ -277,8 +271,12 @@ Sub Comparaison
 End Sub
 
 Sub Relation
-	pFormula = &quot;%alpha in setR bslash \{  3 \} , %bêta notin \[ 0 ; + infinity \[ , setQ nsubset setZ&quot;
+	pFormula = &quot;%alpha in setR bslash \{  3 \} , %beta notin \[ 0 ; + infinity \[ , setQ nsubset setZ&quot;
 	Formule(pFormula)
+End Sub
+
+Sub APropos
+	MsgBox &quot;(C) Olivier Booklage - Version 2.0&quot;, 64, &quot;À propos de SmbMath&quot;
 End Sub
 
 </script:module>
