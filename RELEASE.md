@@ -1,3 +1,13 @@
+# SmbMath 2.1
+
+## Changements
+
+- **Nouveau nom d'affichage** : "SmbMath Extension" remplace "SMB33 Math Extension"
+- **Nouveau logo** : feuille de cahier à réglure, radical et pi
+- **Descriptions génériques** : suppression des références à l'établissement d'origine dans l'extension et la documentation
+- **Page de présentation** : site publié sur https://obook.github.io/SmbMath/ (polices hébergées localement, aucune ressource tierce)
+- **README enrichi** : lien vers la page de présentation, valeurs par défaut de la synchronisation, construction depuis les sources
+
 # SmbMath 2.0
 
 ## Corrections de bugs

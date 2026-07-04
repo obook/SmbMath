@@ -276,7 +276,7 @@ Sub Relation
 End Sub
 
 Sub APropos
-	MsgBox &quot;(C) Olivier Booklage - Version 2.0&quot;, 64, &quot;À propos de SmbMath&quot;
+	MsgBox &quot;(C) Olivier Booklage - Version 2.1&quot;, 64, &quot;À propos de SmbMath&quot;
 End Sub
 
 </script:module>
