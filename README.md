@@ -2,6 +2,8 @@
 
 Extension LibreOffice Writer : outils mathématiques pour l'enseignement secondaire.
 
+**Page de présentation : [obook.github.io/SmbMath](https://obook.github.io/SmbMath/)**
+
 Version actuelle : **2.0**. L'extension fonctionne sous Windows et Linux, avec LibreOffice Writer.
 
 > **Attention** : cette extension est expérimentale, conservez une copie de vos documents avant de l'utiliser. Le créateur ne peut être tenu responsable de la perte de données.
