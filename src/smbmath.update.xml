@@ -3,7 +3,7 @@
 xmlns:xlink="https://www.w3.org/1999/xlink">
   <identifier value="com.obooklage.smbmath" />
   <display-name>
-    <name>SMB33 Math Extension</name>
+    <name>SmbMath Extension</name>
   </display-name>
   <version value="2.0" />
   <update-download>

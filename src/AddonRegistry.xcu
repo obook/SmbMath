@@ -4,7 +4,7 @@
 	oor:name="Registry" oor:package="com.obooklage.smbmath">
         <node oor:name="ProductInfo">
                 <prop oor:name="ProductName" oor:type="xs:string">
-                        <value>SMB33 Math Extension</value>
+                        <value>SmbMath Extension</value>
                 </prop>
 	</node>
         <node oor:name="SystemInfo">
