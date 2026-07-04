@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Feuille de cahier -->
+  <rect x="3" y="3" width="122" height="122" rx="18" fill="#FBFAF3" stroke="#1F2D55" stroke-width="5"/>
+  <!-- Reglure Seyes -->
+  <g stroke="#B9CFE7" stroke-width="2">
+    <line x1="9" y1="38" x2="119" y2="38"/>
+    <line x1="9" y1="62" x2="119" y2="62"/>
+    <line x1="9" y1="86" x2="119" y2="86"/>
+    <line x1="9" y1="110" x2="119" y2="110"/>
+  </g>
+  <!-- Marge rouge -->
+  <line x1="27" y1="7" x2="27" y2="121" stroke="#C24438" stroke-width="2.5" opacity="0.65"/>
+  <!-- Radical -->
+  <path d="M 37 76 L 49 98 L 67 32 L 109 32" fill="none" stroke="#1F2D55" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Pi -->
+  <g stroke="#C24438" stroke-width="8" stroke-linecap="round" fill="none">
+    <path d="M 66 54 L 106 54"/>
+    <path d="M 79 54 L 77 88"/>
+    <path d="M 95 54 L 95 81 Q 95 89 103 86"/>
+  </g>
+</svg>
