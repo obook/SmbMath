@@ -6,193 +6,179 @@
 <title>SmbMath - Outils mathématiques pour LibreOffice Writer</title>
 <meta name="description" content="SmbMath est une extension LibreOffice Writer qui facilite l'insertion et l'harmonisation de formules mathématiques pour l'enseignement secondaire.">
 <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/cmu-serif.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/cmu-typewriter-text.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="vendor/fonts.css">
 <style>
 :root {
-    --paper: #FBFAF3;
-    --ligne: #B9CFE7;
-    --encre: #1F2D55;
-    --rouge: #C24438;
-    --mine: #66719A;
-    --craie: #FFFFFF;
-    --serif: "CMU Serif", Georgia, "Times New Roman", serif;
-    --sans: "Public Sans", -apple-system, "Segoe UI", sans-serif;
+    --ivoire: #F7F3EA;
+    --encre: #2B2A26;
+    --bordeaux: #7B2D26;
+    --bordeaux-fonce: #5E211B;
+    --or: #A98435;
+    --estompe: #6B6455;
+    --filet-leger: rgba(43, 42, 38, 0.2);
+    --garamond: "EB Garamond", Garamond, Georgia, serif;
+    --cmu: "CMU Serif", Georgia, serif;
     --mono: "CMU Typewriter Text", "Courier New", monospace;
-    --reglure: 2.25rem;
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
 }
-
 body {
-    font-family: var(--sans);
+    font-family: var(--garamond);
+    background: var(--ivoire);
     color: var(--encre);
-    background-color: var(--paper);
-    line-height: 1.65;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+.page { max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+a { color: var(--bordeaux); }
+a:hover { color: var(--bordeaux-fonce); }
+a:focus-visible {
+    outline: 2px solid var(--bordeaux);
+    outline-offset: 3px;
+}
+
+/* ---------- Frontispice ---------- */
+.masthead { text-align: center; }
+.masthead .maison {
+    font-size: 0.8rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--or);
+}
+.filet-double {
+    border: none;
+    border-top: 1px solid var(--encre);
+    border-bottom: 1px solid var(--encre);
+    height: 4px;
+    margin: 1rem 0;
+}
+.masthead nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
     font-size: 1rem;
 }
-
-/* La marge rouge du cahier */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: clamp(1.25rem, 6vw, 5.5rem);
-    width: 2px;
-    background: var(--rouge);
-    opacity: 0.55;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.page {
-    position: relative;
-    z-index: 1;
-    max-width: 60rem;
-    margin: 0 auto;
-    padding: 0 1.5rem 0 clamp(3rem, 10vw, 8rem);
-}
-
-a { color: var(--encre); text-decoration-color: var(--rouge); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-a:hover { color: var(--rouge); }
-a:focus-visible, button:focus-visible {
-    outline: 2px solid var(--rouge);
-    outline-offset: 3px;
-    border-radius: 2px;
-}
-
-/* ---------- En-tête ---------- */
-header.site {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding-top: calc(var(--reglure) * 1);
-    min-height: calc(var(--reglure) * 2);
-}
-header.site img { width: 1.75rem; height: 1.75rem; }
-header.site .nom { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; }
-header.site nav { margin-left: auto; display: flex; gap: 1.25rem; font-size: 0.85rem; }
-header.site nav a { text-decoration: none; }
-header.site nav a:hover { text-decoration: underline; text-decoration-color: var(--rouge); }
-
-/* ---------- Héros ---------- */
-.hero { padding: calc(var(--reglure) * 2) 0 calc(var(--reglure) * 1); }
-
-.eyebrow {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--rouge);
-}
+.masthead nav a { text-decoration: none; }
+.masthead nav a:hover { text-decoration: underline; text-decoration-color: var(--or); }
 
 h1 {
-    font-family: var(--serif);
-    font-size: clamp(2.6rem, 7vw, 4.2rem);
-    font-weight: 700;
+    font-size: clamp(2.6rem, 8vw, 3.4rem);
+    font-weight: 400;
+    font-style: italic;
+    text-align: center;
     line-height: 1.15;
-    letter-spacing: -0.01em;
+    margin: 2.5rem 0 1rem;
 }
-
-.hero p.pitch {
-    max-width: 34rem;
-    color: var(--mine);
-    margin-top: var(--reglure);
+.sous-titre {
+    text-align: center;
+    font-variant: small-caps;
+    letter-spacing: 0.12em;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
 }
+.fleuron { text-align: center; color: var(--or); font-size: 1.3rem; margin: 1.5rem 0; }
 
-.actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-top: var(--reglure); }
+.pitch { max-width: 34rem; margin: 0 auto 2rem; text-align: center; }
 
+.actions { text-align: center; margin-bottom: 0.75rem; }
 .btn {
     display: inline-block;
-    font-family: var(--sans);
-    font-weight: 700;
-    font-size: 0.95rem;
-    background: var(--encre);
-    color: var(--paper);
-    padding: 0.55rem 1.4rem;
-    border-radius: 3px;
+    font-family: var(--garamond);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--bordeaux);
+    color: var(--ivoire);
+    padding: 0.6rem 1.8rem;
     text-decoration: none;
-    border: 2px solid var(--encre);
+    margin: 0.25rem 0.4rem;
 }
-.btn:hover { background: var(--rouge); border-color: var(--rouge); color: var(--paper); }
-.btn-ghost {
-    background: transparent;
-    color: var(--encre);
-}
-.btn-ghost:hover { background: transparent; color: var(--rouge); }
-.version { font-size: 0.85rem; color: var(--mine); }
-
-/* ---------- Signature : la ligne d'écriture ---------- */
-.dictee {
-    margin: calc(var(--reglure) * 2) 0;
-    border: 1px solid var(--ligne);
-    background-color: var(--craie);
-    background-image: repeating-linear-gradient(
-        to bottom,
-        transparent 0,
-        transparent calc(var(--reglure) - 1px),
-        var(--ligne) calc(var(--reglure) - 1px),
-        var(--ligne) var(--reglure)
-    );
-    border-radius: 4px;
-    padding: var(--reglure) 1.5rem;
-    box-shadow: 0 2px 0 rgba(31, 45, 85, 0.06);
-}
-.dictee .etiquette { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mine); }
-.slides { position: relative; min-height: calc(var(--reglure) * 4); }
-.slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    display: grid;
-    align-content: center;
-    gap: 0.4rem;
-}
-.slide.active { opacity: 1; }
-.slide code {
-    font-family: var(--mono);
+.btn:hover { background: var(--bordeaux-fonce); color: var(--ivoire); }
+.btn-lien { background: none; color: var(--bordeaux); border-bottom: 1px solid var(--or); padding: 0.6rem 0.2rem; }
+.btn-lien:hover { background: none; color: var(--bordeaux-fonce); }
+.version { text-align: center; font-style: italic; font-size: 0.95rem; color: var(--estompe); margin-bottom: 1rem; }
+.avertissement {
+    max-width: 32rem;
+    margin: 0 auto;
+    text-align: center;
     font-size: 0.9rem;
-    color: var(--rouge);
-    white-space: nowrap;
+    font-style: italic;
+    color: var(--estompe);
+}
+
+/* ---------- Sections ---------- */
+h2 {
+    font-variant: small-caps;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    font-size: 1.3rem;
+    text-align: center;
+    margin: 3.5rem 0 0.5rem;
+}
+h2 .chapitre { color: var(--or); margin-right: 0.6rem; }
+.h2-filet { width: 5rem; border: none; border-top: 1px solid var(--or); margin: 0.5rem auto 1.75rem; }
+section > p { max-width: 36rem; margin: 0 auto 1.5rem; }
+.note { max-width: 36rem; margin: 1.5rem auto 0; font-size: 0.95rem; font-style: italic; color: var(--estompe); }
+
+/* ---------- Le menu ---------- */
+figure.capture { text-align: center; margin: 0 auto 2rem; max-width: 26rem; }
+figure.capture img {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--filet-leger);
+    padding: 0.4rem;
+    background: #FFFFFF;
+}
+figure.capture figcaption { font-style: italic; font-size: 0.9rem; color: var(--estompe); margin-top: 0.5rem; }
+
+dl.outils { max-width: 36rem; margin: 0 auto; }
+dl.outils dt { font-variant: small-caps; letter-spacing: 0.06em; font-weight: 600; font-size: 1.15rem; }
+dl.outils dt::before { content: "\2014\00A0"; color: var(--or); }
+dl.outils dd { margin: 0.1rem 0 0.9rem 1.4rem; color: var(--estompe); font-size: 1.05rem; }
+
+/* ---------- Formules ---------- */
+.exemples { max-width: 38rem; margin: 0 auto; }
+.exemple {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 0.9rem 0.25rem;
+    border-bottom: 1px solid var(--filet-leger);
+}
+.exemple:first-child { border-top: 1px solid var(--filet-leger); }
+.exemple .intitule { min-width: 0; }
+.exemple .nom { font-variant: small-caps; letter-spacing: 0.06em; display: block; }
+.exemple code {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--estompe);
+    display: block;
     overflow-x: auto;
+    white-space: nowrap;
+    max-width: 18rem;
 }
-.slide .rendu { font-family: var(--serif); font-size: 1.7rem; }
-@media (prefers-reduced-motion: reduce) {
-    .slide { transition: none; }
+.exemple .math { font-family: var(--cmu); font-size: 1.4rem; text-align: right; flex: none; }
+@media (max-width: 34rem) {
+    .exemple { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .exemple .math { text-align: left; }
 }
 
-/* ---------- Rendus mathématiques ---------- */
-.rendu, .carte .math { font-family: var(--serif); }
-
-.frac { display: inline-flex; flex-direction: column; vertical-align: -0.7em; text-align: center; line-height: 1.15; }
-.frac > span:last-child { border-top: 1.5px solid currentColor; padding: 0 0.3em; }
+/* Rendus mathématiques */
+.frac { display: inline-flex; flex-direction: column; vertical-align: -0.75em; text-align: center; line-height: 1.15; }
+.frac > span:last-child { border-top: 1px solid currentColor; padding: 0 0.3em; }
 .frac > span:first-child { padding: 0 0.3em; }
 .frac.petite { font-size: 0.72em; vertical-align: -0.5em; }
-
 .sqrt { white-space: nowrap; }
-.sqrt .rad { border-top: 1.5px solid currentColor; padding: 0 0.15em; }
-
+.sqrt .rad { border-top: 1px solid currentColor; padding: 0 0.15em; }
 .vec { position: relative; display: inline-block; }
-.vec::before {
-    content: "\2192";
-    position: absolute;
-    top: -0.95em;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 0.8em;
-}
-
+.vec::before { content: "\2192"; position: absolute; top: -0.9em; left: 0; right: 0; text-align: center; font-size: 0.75em; }
 .chapeau { position: relative; display: inline-block; }
 .chapeau::before {
     content: "\FE3F";
@@ -204,127 +190,51 @@ h1 {
     transform: scaleX(2.4);
     font-size: 0.7em;
 }
-
 .systeme { display: inline-flex; align-items: center; gap: 0.25em; }
-.systeme .accolade { font-size: 2.4em; font-weight: 400; transform: translateY(-0.05em); }
-.systeme .equations { display: grid; line-height: 1.4; text-align: left; }
-
+.systeme .accolade { font-size: 2.1em; font-weight: 400; }
+.systeme .equations { display: grid; line-height: 1.3; text-align: left; font-size: 0.9em; }
 .parens { display: inline-flex; align-items: center; }
-.parens .paren { font-size: 2.2em; font-weight: 300; }
-.parens .colonne { display: grid; line-height: 1.35; text-align: center; padding: 0 0.15em; }
-
+.parens .paren { font-size: 2em; font-weight: 400; }
+.parens .colonne { display: grid; line-height: 1.3; text-align: center; padding: 0 0.15em; font-size: 0.9em; }
 sup, sub { font-size: 0.68em; }
 
-/* ---------- Sections ---------- */
-section { padding: calc(var(--reglure) * 1) 0 calc(var(--reglure) * 2); }
-h2 {
-    font-family: var(--serif);
-    font-size: 1.9rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: var(--reglure);
-}
-h2 .num { color: var(--rouge); font-style: italic; margin-right: 0.4rem; }
-section > p { max-width: 40rem; margin-bottom: var(--reglure); }
-.note { color: var(--mine); font-size: 0.9rem; max-width: 40rem; }
+/* ---------- Synchronisation ---------- */
+table.sync { border-collapse: collapse; margin: 0 auto; }
+table.sync th, table.sync td { padding: 0.4rem 1.75rem; }
+table.sync th { font-variant: small-caps; font-weight: 600; letter-spacing: 0.06em; text-align: left; }
+table.sync td { font-family: var(--cmu); }
+table.sync tr { border-bottom: 1px solid var(--filet-leger); }
+table.sync tr:first-child { border-top: 2px solid var(--encre); }
+table.sync tr:last-child { border-bottom: 2px solid var(--encre); }
 
-/* Menu */
-.menu-grid { display: grid; grid-template-columns: minmax(16rem, 24rem) 1fr; gap: 2rem; align-items: start; }
-.menu-grid img {
-    width: 100%;
-    height: auto;
-    border: 1px solid var(--ligne);
-    border-radius: 4px;
-    background: var(--craie);
-}
-.menu-grid dl dt { font-weight: 700; }
-.menu-grid dl dd { color: var(--mine); margin-bottom: 0.35rem; font-size: 0.95rem; }
+/* ---------- Installation ---------- */
+ol.etapes { max-width: 32rem; margin: 0 auto; list-style-position: outside; padding-left: 1.5rem; }
+ol.etapes li { margin-bottom: 0.6rem; padding-left: 0.5rem; }
+ol.etapes li::marker { color: var(--bordeaux); font-style: italic; }
 
-/* Formules */
-.cartes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(14.5rem, 1fr));
-    gap: 1rem;
-}
-.carte {
-    background: var(--craie);
-    border: 1px solid var(--ligne);
-    border-radius: 4px;
-    padding: 1rem 1.1rem;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    gap: 0.6rem;
-    line-height: 1.5;
-}
-.carte h3 { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rouge); }
-.carte .math { font-size: 1.35rem; align-self: center; padding: 0.5rem 0; }
-.carte code {
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--mine);
-    overflow-x: auto;
-    white-space: nowrap;
-    display: block;
-}
+/* ---------- Sources ---------- */
+.sources code { font-family: var(--mono); font-size: 0.85rem; color: var(--bordeaux); }
 
-/* Synchronisation */
-.sync-table { border-collapse: collapse; background: var(--craie); border: 1px solid var(--ligne); border-radius: 4px; }
-.sync-table th, .sync-table td { padding: 0.5rem 1.1rem; text-align: left; border-bottom: 1px solid var(--ligne); font-size: 0.95rem; }
-.sync-table tr:last-child th, .sync-table tr:last-child td { border-bottom: none; }
-.sync-table th { font-weight: 600; }
-.sync-table td { font-family: var(--serif); }
-
-/* Installation */
-.etapes { list-style: none; counter-reset: etape; max-width: 40rem; }
-.etapes li {
-    counter-increment: etape;
-    position: relative;
-    padding: 0 0 var(--reglure) 3.2rem;
-}
-.etapes li::before {
-    content: counter(etape) ".";
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.5rem;
-    color: var(--rouge);
-}
-.etapes li strong { display: block; }
-.etapes li span { color: var(--mine); font-size: 0.95rem; }
-
-/* Sources */
-.sources code { font-family: var(--mono); font-size: 0.9rem; color: var(--rouge); }
-
-/* Pied de page */
+/* ---------- Pied de page ---------- */
 footer {
-    border-top: 2px solid var(--encre);
-    padding: var(--reglure) 0 calc(var(--reglure) * 2);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 2rem;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    color: var(--mine);
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--estompe);
 }
-footer nav { display: flex; gap: 1.25rem; }
-
-@media (max-width: 40rem) {
-    .menu-grid { grid-template-columns: 1fr; }
-    body::before { left: 0.9rem; }
-    .page { padding-left: 2.2rem; }
-    header.site nav { display: none; }
-}
+footer .filet-double { margin-bottom: 1.5rem; }
+footer nav { display: flex; justify-content: center; gap: 2rem; margin-top: 0.75rem; font-style: normal; font-variant: small-caps; letter-spacing: 0.08em; }
 </style>
 </head>
 <body>
 <div class="page">
 
-<header class="site">
-    <img src="assets/icon.svg" alt="">
-    <span class="nom">SmbMath</span>
+<header class="masthead">
+    <p class="maison">Outils pour l'enseignement des mathématiques</p>
+    <hr class="filet-double">
     <nav aria-label="Navigation principale">
+        <a href="#menu">Le menu</a>
         <a href="#formules">Formules</a>
         <a href="#synchronisation">Synchronisation</a>
         <a href="#installation">Installation</a>
@@ -334,197 +244,151 @@ footer nav { display: flex; gap: 1.25rem; }
 
 <main>
 
-<div class="hero">
-    <p class="eyebrow">Extension LibreOffice Writer</p>
-    <h1>Les formules de maths, sans quitter le clavier.</h1>
-    <p class="pitch">SmbMath ajoute à Writer un menu et une barre d'outils pour insérer des formules mathématiques prêtes à compléter, puis harmoniser d'un seul geste la police et la taille de toutes les formules d'un document. Conçu par un enseignant, pour préparer sujets, corrigés et fiches d'élèves.</p>
-    <div class="actions">
-        <a class="btn" href="https://github.com/obook/SmbMath/raw/main/smbmath.oxt">Télécharger smbmath.oxt</a>
-        <a class="btn btn-ghost" href="https://github.com/obook/SmbMath">Voir le code source</a>
-        <span class="version">Version 2.0 - Windows et Linux</span>
-    </div>
+<h1>SmbMath</h1>
+<p class="sous-titre">Extension pour LibreOffice Writer</p>
+<p class="fleuron" aria-hidden="true">&#10086;</p>
 
-    <div class="dictee" aria-label="Exemples de formules insérées par SmbMath">
-        <p class="etiquette">Code StarMath inséré &rarr; formule obtenue</p>
-        <div class="slides" id="slides">
-            <div class="slide active">
-                <code>{ a } over { b }</code>
-                <p class="rendu"><span class="frac"><span>a</span><span>b</span></span></p>
-            </div>
-            <div class="slide">
-                <code>sqrt{ a }</code>
-                <p class="rendu"><span class="sqrt">&radic;<span class="rad">a</span></span></p>
-            </div>
-            <div class="slide">
-                <code>widevec{AC} = widevec{AB} - widevec{CB}</code>
-                <p class="rendu"><span class="vec">AC</span> = <span class="vec">AB</span> &minus; <span class="vec">CB</span></p>
-            </div>
-            <div class="slide">
-                <code>alignl left lbrace stack{ { 2x + 3y = 7 } # { -3x + 2y = -4 } } right none</code>
-                <p class="rendu"><span class="systeme"><span class="accolade">{</span><span class="equations"><span>2x + 3y = 7</span><span>&minus;3x + 2y = &minus;4</span></span></span></p>
-            </div>
-            <div class="slide">
-                <code>setN subset setZ subset D subset setQ subset setR subset setC</code>
-                <p class="rendu">&#8469; &sub; &#8484; &sub; &#120123; &sub; &#8474; &sub; &#8477; &sub; &#8450;</p>
-            </div>
-        </div>
-    </div>
+<p class="pitch">Un menu et une barre d'outils pour insérer des formules mathématiques prêtes à compléter, puis harmoniser d'un seul geste la police et la taille de toutes les formules d'un document. Conçu par un enseignant, pour préparer sujets, corrigés et fiches d'élèves.</p>
+
+<div class="actions">
+    <a class="btn" href="https://github.com/obook/SmbMath/raw/main/smbmath.oxt">Télécharger</a>
+    <a class="btn btn-lien" href="https://github.com/obook/SmbMath">Code source</a>
 </div>
+<p class="version">Version 2.0, pour Windows et Linux</p>
+<p class="avertissement">Extension expérimentale : conservez une copie de vos documents avant de l'utiliser. Le créateur ne peut être tenu responsable de la perte de données.</p>
 
 <section id="menu">
-    <h2><span class="num">I.</span>Un menu, cinq outils</h2>
-    <div class="menu-grid">
+    <h2><span class="chapitre">I</span>Un menu, cinq outils</h2>
+    <hr class="h2-filet">
+    <figure class="capture">
         <img src="assets/menu-smbmath.png" alt="Le menu SmbMath ouvert dans LibreOffice Writer, avec le sous-menu Formulaire déplié">
-        <dl>
-            <dt>Insérer Formule</dt>
-            <dd>Transforme le texte sélectionné en formule, ou ouvre l'éditeur de formules si aucun texte n'est sélectionné.</dd>
-            <dt>Formulaire</dt>
-            <dd>Dix-sept formules prédéfinies, classées par ordre alphabétique, prêtes à compléter.</dd>
-            <dt>Synchroniser</dt>
-            <dd>Applique une police, une taille et des réglages uniformes à toutes les formules du document.</dd>
-            <dt>Options</dt>
-            <dd>Choix du mode d'insertion : texte brut ou objet OLE.</dd>
-            <dt>À propos</dt>
-            <dd>Auteur et numéro de version de l'extension.</dd>
-        </dl>
-    </div>
+        <figcaption>Le menu SmbMath dans Writer, sous-menu Formulaire déplié.</figcaption>
+    </figure>
+    <dl class="outils">
+        <dt>Insérer Formule</dt>
+        <dd>Transforme le texte sélectionné en formule, ou ouvre l'éditeur de formules si aucun texte n'est sélectionné.</dd>
+        <dt>Formulaire</dt>
+        <dd>Dix-sept formules prédéfinies, classées par ordre alphabétique, prêtes à compléter.</dd>
+        <dt>Synchroniser</dt>
+        <dd>Applique une police, une taille et des réglages uniformes à toutes les formules du document.</dd>
+        <dt>Options</dt>
+        <dd>Choix du mode d'insertion : texte brut ou objet OLE.</dd>
+        <dt>À propos</dt>
+        <dd>Auteur et numéro de version de l'extension.</dd>
+    </dl>
 </section>
 
 <section id="formules">
-    <h2><span class="num">II.</span>Les dix-sept formules du menu</h2>
+    <h2><span class="chapitre">II</span>Les dix-sept formules</h2>
+    <hr class="h2-filet">
     <p>Chaque entrée insère son code StarMath, le langage de l'éditeur de formules de LibreOffice, puis replace le curseur à l'endroit utile pour compléter la formule.</p>
-    <div class="cartes">
-        <div class="carte">
-            <h3>Angle</h3>
-            <p class="math"><span class="chapeau">ABC</span></p>
-            <code>widehat{ABC}</code>
+    <div class="exemples">
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Angle</span><code>widehat{ABC}</code></span>
+            <span class="math"><span class="chapeau">ABC</span></span>
         </div>
-        <div class="carte">
-            <h3>Comparaison</h3>
-            <p class="math">a &#10878; x ; b &#10877; y</p>
-            <code>a geslant x ; b leslant y</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Comparaison</span><code>a geslant x ; b leslant y</code></span>
+            <span class="math">a &#10878; x ; b &#10877; y</span>
         </div>
-        <div class="carte">
-            <h3>Ensembles</h3>
-            <p class="math">&#8469; &sub; &#8484; &sub; &#120123; &sub; &#8474; &sub; &#8477; &sub; &#8450;</p>
-            <code>setN subset setZ subset ...</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Ensembles</span><code>setN subset setZ subset ...</code></span>
+            <span class="math">&#8469; &sub; &#8484; &sub; &#120123; &sub; &#8474; &sub; &#8477; &sub; &#8450;</span>
         </div>
-        <div class="carte">
-            <h3>Équivalence</h3>
-            <p class="math">A &hArr; B</p>
-            <code>A dlrarrow B</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Équivalence</span><code>A dlrarrow B</code></span>
+            <span class="math">A &hArr; B</span>
         </div>
-        <div class="carte">
-            <h3>Exposant</h3>
-            <p class="math">A<sup>B</sup></p>
-            <code>A^{ B }</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Exposant</span><code>A^{ B }</code></span>
+            <span class="math">A<sup>B</sup></span>
         </div>
-        <div class="carte">
-            <h3>Expression</h3>
-            <p class="math">A = 3x + 1</p>
-            <code>"" A={ 3x+1 } newline</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Expression</span><code>"" A={ 3x+1 } newline</code></span>
+            <span class="math">A = 3x + 1</span>
         </div>
-        <div class="carte">
-            <h3>Fonction</h3>
-            <p class="math">f : x &#8614; 2x + 3</p>
-            <code>f:x "&#8614;" 2x+3</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Fonction</span><code>f:x "&#8614;" 2x+3</code></span>
+            <span class="math">f : x &#8614; 2x + 3</span>
         </div>
-        <div class="carte">
-            <h3>Fraction</h3>
-            <p class="math"><span class="frac"><span>a</span><span>b</span></span></p>
-            <code>{ a } over { b }</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Fraction</span><code>{ a } over { b }</code></span>
+            <span class="math"><span class="frac"><span>a</span><span>b</span></span></span>
         </div>
-        <div class="carte">
-            <h3>Fraction en ligne</h3>
-            <p class="math">x = <span class="frac petite"><span>a</span><span>b</span></span> + 1</p>
-            <code>size 7 { { a } over { b } }</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Fraction en ligne</span><code>size 7 { { a } over { b } }</code></span>
+            <span class="math">x = <span class="frac petite"><span>a</span><span>b</span></span> + 1</span>
         </div>
-        <div class="carte">
-            <h3>Implication</h3>
-            <p class="math">A &rArr; B</p>
-            <code>A drarrow B</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Implication</span><code>A drarrow B</code></span>
+            <span class="math">A &rArr; B</span>
         </div>
-        <div class="carte">
-            <h3>Indice</h3>
-            <p class="math">A<sub>B</sub></p>
-            <code>A_{ B }</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Indice</span><code>A_{ B }</code></span>
+            <span class="math">A<sub>B</sub></span>
         </div>
-        <div class="carte">
-            <h3>Opérations</h3>
-            <p class="math">A = 1 + 2 &minus; 3 &times; 4 &divide; 5</p>
-            <code>"" A=1 + 2 - 3 times 4 div 5</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Opérations</span><code>"" A=1 + 2 - 3 times 4 div 5</code></span>
+            <span class="math">A = 1 + 2 &minus; 3 &times; 4 &divide; 5</span>
         </div>
-        <div class="carte">
-            <h3>Racine carrée</h3>
-            <p class="math"><span class="sqrt">&radic;<span class="rad">a</span></span></p>
-            <code>sqrt{ a }</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Racine carrée</span><code>sqrt{ a }</code></span>
+            <span class="math"><span class="sqrt">&radic;<span class="rad">a</span></span></span>
         </div>
-        <div class="carte">
-            <h3>Relation</h3>
-            <p class="math">&alpha; &isin; &#8477;&#8726;{3}, &beta; &notin; [0 ; +&infin;[</p>
-            <code>%alpha in setR bslash \{ 3 \} ...</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Relation</span><code>%alpha in setR bslash \{ 3 \} ...</code></span>
+            <span class="math">&alpha; &isin; &#8477;&#8726;{3}, &beta; &notin; [0 ; +&infin;[</span>
         </div>
-        <div class="carte">
-            <h3>Système</h3>
-            <p class="math"><span class="systeme"><span class="accolade">{</span><span class="equations"><span>2x + 3y = 7</span><span>&minus;3x + 2y = &minus;4</span></span></span></p>
-            <code>alignl left lbrace stack{ ... }</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Système</span><code>alignl left lbrace stack{ ... }</code></span>
+            <span class="math"><span class="systeme"><span class="accolade">{</span><span class="equations"><span>2x + 3y = 7</span><span>&minus;3x + 2y = &minus;4</span></span></span></span>
         </div>
-        <div class="carte">
-            <h3>Vecteur</h3>
-            <p class="math"><span class="vec">AC</span> = <span class="vec">AB</span> &minus; <span class="vec">CB</span></p>
-            <code>widevec{AC} = widevec{AB} - widevec{CB}</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Vecteur</span><code>widevec{AC} = widevec{AB} - widevec{CB}</code></span>
+            <span class="math"><span class="vec">AC</span> = <span class="vec">AB</span> &minus; <span class="vec">CB</span></span>
         </div>
-        <div class="carte">
-            <h3>Vecteur Coordonnées</h3>
-            <p class="math"><span class="vec">AB</span>&#8202;<span class="parens"><span class="paren">(</span><span class="colonne"><span>x<sub>B</sub> &minus; x<sub>A</sub></span><span>y<sub>B</sub> &minus; y<sub>A</sub></span></span><span class="paren">)</span></span></p>
-            <code>widevec {AB} left( matrix { ... } right)</code>
+        <div class="exemple">
+            <span class="intitule"><span class="nom">Vecteur Coordonnées</span><code>widevec {AB} left( matrix { ... } right)</code></span>
+            <span class="math"><span class="vec">AB</span>&#8202;<span class="parens"><span class="paren">(</span><span class="colonne"><span>x<sub>B</sub> &minus; x<sub>A</sub></span><span>y<sub>B</sub> &minus; y<sub>A</sub></span></span><span class="paren">)</span></span></span>
         </div>
     </div>
 </section>
 
 <section id="synchronisation">
-    <h2><span class="num">III.</span>Des formules toutes identiques</h2>
-    <p>Un document rassemble vite des dizaines de formules aux réglages disparates. L'outil <strong>Synchroniser</strong> parcourt toutes les formules OLE du document et leur applique les mêmes réglages :</p>
-    <table class="sync-table">
+    <h2><span class="chapitre">III</span>Synchronisation</h2>
+    <hr class="h2-filet">
+    <p>Un document rassemble vite des dizaines de formules aux réglages disparates. L'outil Synchroniser parcourt toutes les formules OLE du document et leur applique les mêmes réglages :</p>
+    <table class="sync">
         <tr><th>Police</th><td>CMU Serif</td></tr>
         <tr><th>Taille de police</th><td>12 pt</td></tr>
         <tr><th>Exposants et indices</th><td>65 %</td></tr>
         <tr><th>Limites</th><td>65 %</td></tr>
     </table>
-    <p class="note" style="margin-top: 2.25rem;">La police <a href="https://www.checkmyworking.com/cm-web-fonts/">CMU Serif</a> (Computer Modern) est celle de LaTeX ; c'est elle qui compose les titres et les formules de cette page. Installée sur votre machine, elle donne aux documents Writer le rendu d'un ouvrage de mathématiques.</p>
+    <p class="note">La police <a href="https://www.checkmyworking.com/cm-web-fonts/">CMU Serif</a> (Computer Modern) est celle de LaTeX ; c'est elle qui compose les formules de cette page. Installée sur votre machine, elle donne aux documents Writer le rendu d'un ouvrage de mathématiques.</p>
 </section>
 
 <section id="installation">
-    <h2><span class="num">IV.</span>Installation</h2>
+    <h2><span class="chapitre">IV</span>Installation</h2>
+    <hr class="h2-filet">
     <ol class="etapes">
-        <li>
-            <strong>Télécharger <a href="https://github.com/obook/SmbMath/raw/main/smbmath.oxt">smbmath.oxt</a></strong>
-            <span>La dernière version publiée sur le dépôt GitHub.</span>
-        </li>
-        <li>
-            <strong>Ouvrir le gestionnaire des extensions</strong>
-            <span>Dans LibreOffice Writer : menu Outils &gt; Gestionnaire des extensions.</span>
-        </li>
-        <li>
-            <strong>Ajouter le fichier</strong>
-            <span>Cliquer sur Ajouter, sélectionner smbmath.oxt et accepter la licence.</span>
-        </li>
-        <li>
-            <strong>Redémarrer LibreOffice</strong>
-            <span>Le menu SmbMath apparaît dans la barre de menus de Writer. Les mises à jour seront ensuite proposées automatiquement.</span>
-        </li>
+        <li>Télécharger <a href="https://github.com/obook/SmbMath/raw/main/smbmath.oxt">smbmath.oxt</a>, la dernière version publiée sur le dépôt.</li>
+        <li>Dans LibreOffice Writer : menu Outils, Gestionnaire des extensions.</li>
+        <li>Ajouter le fichier smbmath.oxt et accepter la licence.</li>
+        <li>Redémarrer LibreOffice : le menu SmbMath apparaît dans Writer.</li>
     </ol>
-    <p class="note">Extension expérimentale : conservez une copie de vos documents avant de l'utiliser. Le créateur ne peut être tenu responsable de la perte de données.</p>
+    <p class="note">Les mises à jour publiées sur le dépôt sont ensuite proposées automatiquement par le gestionnaire des extensions.</p>
 </section>
 
 <section id="sources" class="sources">
-    <h2><span class="num">V.</span>Depuis les sources</h2>
-    <p>Le paquet <code>.oxt</code> est une archive ZIP du dossier <code>src/</code> : lancer <code>./make_extension.sh</code> (Linux) ou <code>make_extension.bat</code> (Windows). Le code est écrit en StarBasic, dans deux modules : <code>MainModule.xba</code> (insertion des formules, options) et <code>SyncModule.xba</code> (synchronisation).</p>
+    <h2><span class="chapitre">V</span>Depuis les sources</h2>
+    <hr class="h2-filet">
+    <p>Le paquet <code>.oxt</code> est une archive ZIP du dossier <code>src/</code> : lancer <code>./make_extension.sh</code> (Linux) ou <code>make_extension.bat</code> (Windows). Le code est écrit en StarBasic, dans deux modules : <code>MainModule.xba</code> pour l'insertion des formules et les options, <code>SyncModule.xba</code> pour la synchronisation.</p>
 </section>
 
 </main>
 
 <footer>
+    <hr class="filet-double">
     <p>&copy; 2023-2026 Olivier Booklage. Usage éducatif encouragé, usage commercial et entraînement d'IA interdits.</p>
     <nav aria-label="Liens du pied de page">
         <a href="https://github.com/obook/SmbMath/blob/main/LICENSE.md">Licence</a>
@@ -534,19 +398,5 @@ footer nav { display: flex; gap: 1.25rem; }
 </footer>
 
 </div>
-
-<script>
-(function () {
-    var reduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduit) return;
-    var slides = document.querySelectorAll("#slides .slide");
-    var actif = 0;
-    setInterval(function () {
-        slides[actif].classList.remove("active");
-        actif = (actif + 1) % slides.length;
-        slides[actif].classList.add("active");
-    }, 3400);
-})();
-</script>
 </body>
 </html>
