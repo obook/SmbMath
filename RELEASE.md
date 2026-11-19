@@ -1,3 +1,10 @@
+# SmbMath 2.2.2
+
+## Corrections
+
+- **Icône d'Insérer Formule** : LibreOffice affichait son icône à la place de celle de l'extension
+- **Icône de Formulaire** : l'entrée du menu n'avait pas d'icône
+
 # SmbMath 2.2.1
 
 ## Changements
