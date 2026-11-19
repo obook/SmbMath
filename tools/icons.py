@@ -1,6 +1,6 @@
 # Usage : python3 tools/icons.py
 # Génère le jeu d'icônes SmbMath : grille 24x24, traits bordeaux, cases or.
-import os
+import os, subprocess
 N, R = "#7B2D26", "#A98435"
 def p(d, c=N, w=2): return f'<path d="{d}" fill="none" stroke="{c}" stroke-width="{w}" stroke-linecap="round" stroke-linejoin="round"/>'
 def box(x, y, w, h): return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="1.5" fill="none" stroke="{R}" stroke-width="1.8"/>'
@@ -9,6 +9,8 @@ A_HI = p("M2 17 L7.5 3 L13 17 M4.2 12 H10.8")
 A_LO = p("M2 21 L7.5 7 L13 21 M4.2 16 H10.8")
 ICONS = {
  "fraction": box(7, 2, 10, 7) + p("M3 12 H21") + box(7, 15, 10, 7),
+ "formulaire": box(2.5, 3, 5, 5) + p("M11 5.5 H21.5") + box(2.5, 9.5, 5, 5) + p("M11 12 H21.5")
+   + box(2.5, 16, 5, 5) + p("M11 18.5 H21.5"),
  "squareroot": p("M2 13 L5 11.5 L8.5 20 L12.5 4 H22") + box(13.5, 7.5, 7.5, 10.5),
  "expression": A_HI.replace("17", "18") + p("M14 9 H18 M14 14 H18") + box(19, 6, 4.5, 11),
  "vector": p("M3 6 H20 M16.5 2.5 L20 6 L16.5 9.5") + box(3, 12, 18, 9),
@@ -37,3 +39,9 @@ for name, body in ICONS.items():
             f'<g transform="translate(12 12) scale(0.78) translate(-12 -12)">{body}</g>')
     with open(f"{OUT}/{name}.svg", "w") as f:
         f.write(f'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">{body}</svg>\n')
+
+# Les entrées de sous-menu n'acceptent que des bitmaps nommés <id>_16.bmp / <id>_26.bmp (contenu PNG accepté).
+for size in (16, 26):
+    subprocess.run(["inkscape", f"{OUT}/formulaire.svg", "-w", str(size), "-h", str(size),
+                    "-o", f"{OUT}/formulaire_{size}.png"], check=True, capture_output=True)
+    os.replace(f"{OUT}/formulaire_{size}.png", f"{OUT}/formulaire_{size}.bmp")

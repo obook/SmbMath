@@ -160,6 +160,14 @@ Sub InsertionFormule(Optional pFormula as String)
 
 End Sub
 
+Sub InsererFormule
+
+	&apos; Macro plutôt que .uno:InsertObjectStarMath : LibreOffice impose son icône aux commandes natives
+	dispatcher = createUnoService(&quot;com.sun.star.frame.DispatchHelper&quot;)
+	dispatcher.executeDispatch(ThisComponent.CurrentController.Frame, &quot;.uno:InsertObjectStarMath&quot;, &quot;&quot;, 0, Array())
+
+End Sub
+
 Sub Fraction
 
 	pFormula = &quot;{ a } over { b }&quot; REM Revenir 13 fois en arrière
@@ -276,7 +284,7 @@ Sub Relation
 End Sub
 
 Sub APropos
-	MsgBox &quot;(C) Olivier Booklage - Version 2.2.1&quot;, 64, &quot;À propos de SmbMath&quot;
+	MsgBox &quot;(C) Olivier Booklage - Version 2.2.2&quot;, 64, &quot;À propos de SmbMath&quot;
 End Sub
 
 </script:module>

@@ -259,7 +259,7 @@
 
             <node oor:name="com.obooklage.smbmath.image_inserer" oor:op="replace">
                      <prop oor:name="URL" oor:type="xs:string">
-                              <value>.uno:InsertObjectStarMath</value>
+                              <value>macro:///SmbMath.MainModule.InsererFormule</value>
                      </prop>
                      <node oor:name="UserDefinedImages">
                               <prop oor:name="ImageSmallURL">
@@ -310,7 +310,7 @@
                                     <value>com.sun.star.text.TextDocument</value>
                               </prop>
                               <prop oor:name="URL" oor:type="xs:string">
-                                    <value>.uno:InsertObjectStarMath</value>
+                                    <value>macro:///SmbMath.MainModule.InsererFormule</value>
                               </prop>
                               <prop oor:name="Target" oor:type="xs:string">
                                     <value>_self</value>
@@ -396,7 +396,7 @@
                                     <value>Insérer Formule</value>
                               </prop>
                               <prop oor:name="URL">
-                                    <value>.uno:InsertObjectStarMath</value>
+                                    <value>macro:///SmbMath.MainModule.InsererFormule</value>
                               </prop>
                               <prop oor:name="Target" oor:type="xs:string">
                                     <value>_self</value>
@@ -411,11 +411,9 @@
                               <prop oor:name="Target" oor:type="xs:string">
                                     <value>_self</value>
                               </prop>
-                              <prop oor:name="URL" oor:type="xs:string">
-                                    <value>XXX</value>
-                              </prop>
-                              <prop oor:name="ImageIdentifier" oor:type="xs:string"> <!-- Ne fonctionne pas -->
-                                    <value>%origin%/icons/fonction.svg</value>
+                              <!-- Entrée de sous-menu : LibreOffice ignore l'URL et charge ImageIdentifier + _16.bmp / _26.bmp -->
+                              <prop oor:name="ImageIdentifier" oor:type="xs:string">
+                                    <value>%origin%/icons/formulaire</value>
                               </prop>
 
                               <!-- Sous-Items 02 -->
