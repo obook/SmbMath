@@ -1,3 +1,9 @@
+# SmbMath 2.2.1
+
+## Changements
+
+- **Couleurs** : logo et icônes aux couleurs de la page de présentation (bordeaux et or)
+
 # SmbMath 2.2
 
 ## Changements
