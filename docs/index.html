@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SmbMath - Outils mathématiques pour LibreOffice Writer</title>
-<meta name="description" content="SmbMath est une extension LibreOffice Writer qui facilite l'insertion et l'harmonisation de formules mathématiques pour l'enseignement secondaire.">
+<meta name="description" content="SmbMath est une extension LibreOffice Writer qui facilite l'insertion et l'harmonisation des formules mathématiques, pensée pour l'enseignement secondaire.">
 <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
 <link rel="stylesheet" href="vendor/fonts.css">
 <style>
@@ -248,17 +248,17 @@ footer nav { display: flex; justify-content: center; gap: 2rem; margin-top: 0.75
 <p class="sous-titre">Extension pour LibreOffice Writer</p>
 <p class="fleuron" aria-hidden="true">&#10086;</p>
 
-<p class="pitch">Un menu et une barre d'outils pour insérer des formules mathématiques prêtes à compléter, puis harmoniser d'un seul geste la police et la taille de toutes les formules d'un document. Conçu par un enseignant, pour préparer sujets, corrigés et fiches d'élèves.</p>
+<p class="pitch">SmbMath ajoute à Writer un menu et une barre d'outils qui insèrent des formules mathématiques prêtes à compléter, puis donnent en un clic la même police et la même taille à toutes les formules du document. Un enseignant a conçu l'extension pour préparer ses sujets et ses fiches d'élèves.</p>
 
 <div class="actions">
     <a class="btn" href="https://github.com/obook/SmbMath/raw/main/smbmath.oxt">Télécharger</a>
     <a class="btn btn-lien" href="https://github.com/obook/SmbMath">Code source</a>
 </div>
 <p class="version">Version 2.2, pour Windows et Linux</p>
-<p class="avertissement">Extension expérimentale : conservez une copie de vos documents avant de l'utiliser. Le créateur ne peut être tenu responsable de la perte de données.</p>
+<p class="avertissement">Extension expérimentale&nbsp;: conservez une copie de vos documents avant de l'utiliser. Le créateur ne peut être tenu responsable de la perte de données.</p>
 
 <section id="menu">
-    <h2><span class="chapitre">I</span>Un menu, cinq outils</h2>
+    <h2><span class="chapitre">I</span>Le menu</h2>
     <hr class="h2-filet">
     <figure class="capture">
         <img src="assets/menu-smbmath.png" alt="Le menu SmbMath ouvert dans LibreOffice Writer, avec le sous-menu Formulaire déplié">
@@ -266,20 +266,20 @@ footer nav { display: flex; justify-content: center; gap: 2rem; margin-top: 0.75
     </figure>
     <dl class="outils">
         <dt>Insérer Formule</dt>
-        <dd>Transforme le texte sélectionné en formule, ou ouvre l'éditeur de formules si aucun texte n'est sélectionné.</dd>
+        <dd>Transforme le texte sélectionné en formule ou, si rien n'est sélectionné, ouvre l'éditeur de formules.</dd>
         <dt>Formulaire</dt>
         <dd>Dix-sept formules prédéfinies, classées par ordre alphabétique, prêtes à compléter.</dd>
         <dt>Synchroniser</dt>
-        <dd>Applique une police, une taille et des réglages uniformes à toutes les formules du document.</dd>
+        <dd>Donne la même police et les mêmes tailles à toutes les formules du document.</dd>
         <dt>Options</dt>
-        <dd>Choix du mode d'insertion : texte brut ou objet OLE.</dd>
+        <dd>Choix du mode d'insertion&nbsp;: texte brut ou objet OLE.</dd>
         <dt>À propos</dt>
-        <dd>Auteur et numéro de version de l'extension.</dd>
+        <dd>Affiche l'auteur et le numéro de version de l'extension.</dd>
     </dl>
 </section>
 
 <section id="formules">
-    <h2><span class="chapitre">II</span>Les dix-sept formules</h2>
+    <h2><span class="chapitre">II</span>Les formules</h2>
     <hr class="h2-filet">
     <p>Chaque entrée insère son code StarMath, le langage de l'éditeur de formules de LibreOffice, puis replace le curseur à l'endroit utile pour compléter la formule.</p>
     <div class="exemples">
@@ -357,14 +357,14 @@ footer nav { display: flex; justify-content: center; gap: 2rem; margin-top: 0.75
 <section id="synchronisation">
     <h2><span class="chapitre">III</span>Synchronisation</h2>
     <hr class="h2-filet">
-    <p>Un document rassemble vite des dizaines de formules aux réglages disparates. L'outil Synchroniser parcourt toutes les formules OLE du document et leur applique les mêmes réglages :</p>
+    <p>Au fil d'un document, vos formules finissent par avoir des polices et des tailles différentes. Synchroniser parcourt toutes les formules OLE du document et leur applique ces réglages&nbsp;:</p>
     <table class="sync">
         <tr><th>Police</th><td>CMU Serif</td></tr>
-        <tr><th>Taille de police</th><td>12 pt</td></tr>
-        <tr><th>Exposants et indices</th><td>65 %</td></tr>
-        <tr><th>Limites</th><td>65 %</td></tr>
+        <tr><th>Taille de police</th><td>12&nbsp;pt</td></tr>
+        <tr><th>Exposants et indices</th><td>65&nbsp;%</td></tr>
+        <tr><th>Limites</th><td>65&nbsp;%</td></tr>
     </table>
-    <p class="note">La police <a href="https://www.checkmyworking.com/cm-web-fonts/">CMU Serif</a> (Computer Modern) est celle de LaTeX ; c'est elle qui compose les formules de cette page. Installée sur votre machine, elle donne aux documents Writer le rendu d'un ouvrage de mathématiques.</p>
+    <p class="note">La police <a href="https://www.checkmyworking.com/cm-web-fonts/">CMU Serif</a> (Computer Modern) est la police de LaTeX&nbsp;; les formules de cette page l'utilisent aussi. Writer ne l'affiche que si vous l'avez installée sur votre machine.</p>
 </section>
 
 <section id="installation">
@@ -372,17 +372,17 @@ footer nav { display: flex; justify-content: center; gap: 2rem; margin-top: 0.75
     <hr class="h2-filet">
     <ol class="etapes">
         <li>Télécharger <a href="https://github.com/obook/SmbMath/raw/main/smbmath.oxt">smbmath.oxt</a>, la dernière version publiée sur le dépôt.</li>
-        <li>Dans LibreOffice Writer : menu Outils, Gestionnaire des extensions.</li>
+        <li>Dans LibreOffice Writer&nbsp;: menu Outils, Gestionnaire des extensions.</li>
         <li>Ajouter le fichier smbmath.oxt et accepter la licence.</li>
-        <li>Redémarrer LibreOffice : le menu SmbMath apparaît dans Writer.</li>
+        <li>Redémarrer LibreOffice&nbsp;: le menu SmbMath apparaît dans Writer.</li>
     </ol>
-    <p class="note">Les mises à jour publiées sur le dépôt sont ensuite proposées automatiquement par le gestionnaire des extensions.</p>
+    <p class="note">Le gestionnaire des extensions vous proposera ensuite les mises à jour publiées sur le dépôt.</p>
 </section>
 
 <section id="sources" class="sources">
     <h2><span class="chapitre">V</span>Depuis les sources</h2>
     <hr class="h2-filet">
-    <p>Le paquet <code>.oxt</code> est une archive ZIP du dossier <code>src/</code> : lancer <code>./make_extension.sh</code> (Linux) ou <code>make_extension.bat</code> (Windows). Le code est écrit en StarBasic, dans deux modules : <code>MainModule.xba</code> pour l'insertion des formules et les options, <code>SyncModule.xba</code> pour la synchronisation.</p>
+    <p>Le paquet <code>.oxt</code> est une archive ZIP du dossier <code>src/</code>&nbsp;: lancer <code>./make_extension.sh</code> (Linux) ou <code>make_extension.bat</code> (Windows). Le code StarBasic tient en deux modules&nbsp;: <code>MainModule.xba</code> pour l'insertion des formules et les options, <code>SyncModule.xba</code> pour la synchronisation.</p>
 </section>
 
 </main>
