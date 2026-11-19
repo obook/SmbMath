@@ -1,7 +1,7 @@
 # Usage : python3 tools/icons.py
-# Génère le jeu d'icônes SmbMath : grille 24x24, traits marine, cases rouges.
+# Génère le jeu d'icônes SmbMath : grille 24x24, traits bordeaux, cases or.
 import os
-N, R = "#1F2D55", "#C24438"
+N, R = "#7B2D26", "#A98435"
 def p(d, c=N, w=2): return f'<path d="{d}" fill="none" stroke="{c}" stroke-width="{w}" stroke-linecap="round" stroke-linejoin="round"/>'
 def box(x, y, w, h): return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="1.5" fill="none" stroke="{R}" stroke-width="1.8"/>'
 def dot(x, y, r=1.4, c=N): return f'<circle cx="{x}" cy="{y}" r="{r}" fill="{c}"/>'
@@ -33,7 +33,7 @@ ICONS = {
 # Pastille ivoire : garde les icônes lisibles en thème clair comme sombre.
 OUT = os.path.join(os.path.dirname(__file__), "..", "src", "icons")
 for name, body in ICONS.items():
-    body = ('<rect x="0.5" y="0.5" width="23" height="23" rx="4" fill="#FBFAF3" stroke="#1F2D55" stroke-width="1"/>'
+    body = ('<rect x="0.5" y="0.5" width="23" height="23" rx="4" fill="#F7F3EA" stroke="#7B2D26" stroke-width="1"/>'
             f'<g transform="translate(12 12) scale(0.78) translate(-12 -12)">{body}</g>')
     with open(f"{OUT}/{name}.svg", "w") as f:
         f.write(f'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">{body}</svg>\n')
