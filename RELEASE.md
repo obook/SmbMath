@@ -1,3 +1,10 @@
+# SmbMath 2.2
+
+## Changements
+
+- **Nouvelles icônes** : jeu redessiné dans le style du logo, lisible en thème clair comme sombre
+- **Script `tools/icons.py`** : génère les icônes (`python3 tools/icons.py`)
+
 # SmbMath 2.1
 
 ## Changements
