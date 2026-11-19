@@ -13,7 +13,7 @@ Télécharger LibreOffice : [en français](https://fr.libreoffice.org/download/t
 ## Fonctionnalités
 
 <p align="center">
-    <img src="./media/Screenshot_20230809_121126.png" width="400" alt="Menu SmbMath dans LibreOffice Writer">
+    <img src="./docs/assets/menu-smbmath.png" width="400" alt="Menu SmbMath dans LibreOffice Writer">
 </p>
 
 Après installation, un menu **SmbMath** et une barre d'outils sont ajoutés à Writer :
